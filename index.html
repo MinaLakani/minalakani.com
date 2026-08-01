@@ -239,6 +239,76 @@
       font-weight: 400;
     }
 
+    .credits {
+      padding: clamp(5.625rem, 12vw, 10rem) clamp(1.75rem, 8vw, 8.125rem);
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 2rem;
+    }
+
+    .credits-header {
+      max-width: 44rem;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    .credits h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(2rem, 3.6vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .credits-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
+      line-height: 1.65;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2rem, 4vw, 4.5rem);
+    }
+
+    .credit-group {
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+    }
+
+    .credit-group h3 {
+      margin: 0 0 1.5rem;
+      color: var(--wine);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .credit-list {
+      display: grid;
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .credit-title {
+      display: block;
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      line-height: 1.2;
+    }
+
+    .credit-note {
+      display: block;
+      margin-top: .35rem;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .85rem;
+      line-height: 1.55;
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -282,6 +352,7 @@
       }
 
       .disciplines { grid-template-columns: 1fr; }
+      .credits-grid { grid-template-columns: 1fr; }
       .discipline { min-height: 10.625rem; }
 
       .discipline + .discipline {
@@ -315,7 +386,7 @@
     <nav class="site-nav" aria-label="Main navigation">
       <a href="#">Home</a>
       <a href="#journey">Biography</a>
-      <a href="#work">Credits</a>
+      <a href="#credits">Credits</a>
       <a href="#work">Archive</a>
     </nav>
   </header>
@@ -357,6 +428,58 @@
         <span aria-hidden="true">03</span>
         <h3>Television</h3>
       </article>
+    </section>
+
+    <section class="credits" id="credits" aria-labelledby="credits-heading">
+      <div class="credits-header">
+        <p class="section-label">Credits</p>
+        <h2 id="credits-heading">Selected acting work across theatre, film, and television.</h2>
+        <p>A concise record of confirmed stage and screen credits from Mina Lakani's professional career.</p>
+      </div>
+
+      <div class="credits-grid">
+        <article class="credit-group">
+          <h3>Theatre</h3>
+          <ul class="credit-list">
+            <li>
+              <span class="credit-title">Hamlet</span>
+              <span class="credit-note">Professional theatre production.</span>
+            </li>
+            <li>
+              <span class="credit-title">The Seagull</span>
+              <span class="credit-note">Professional theatre production.</span>
+            </li>
+            <li>
+              <span class="credit-title">Striptease</span>
+              <span class="credit-note">Stage production performed in California and Canada.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="credit-group">
+          <h3>Film</h3>
+          <ul class="credit-list">
+            <li>
+              <span class="credit-title">Rooz-e Fereshteh</span>
+              <span class="credit-note">Day of the Angel, feature film.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="credit-group">
+          <h3>Television</h3>
+          <ul class="credit-list">
+            <li>
+              <span class="credit-title">Hasti</span>
+              <span class="credit-note">Telefilm, 2008. Directed by Mahmoud Moazami.</span>
+            </li>
+            <li>
+              <span class="credit-title">Tavan</span>
+              <span class="credit-note">Television series.</span>
+            </li>
+          </ul>
+        </article>
+      </div>
     </section>
   </main>
 
