@@ -221,7 +221,21 @@
 
     .discipline {
       min-height: 15rem;
+    }
+
+    .discipline a {
+      display: flex;
+      min-height: 15rem;
+      flex-direction: column;
+      justify-content: center;
       padding: 3.4375rem clamp(1.75rem, 5vw, 4.375rem);
+      text-decoration: none;
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    .discipline a:hover {
+      background: rgb(255 255 255 / 28%);
+      color: var(--wine);
     }
 
     .discipline + .discipline { border-left: 1px solid var(--line); }
@@ -353,7 +367,8 @@
 
       .disciplines { grid-template-columns: 1fr; }
       .credits-grid { grid-template-columns: 1fr; }
-      .discipline { min-height: 10.625rem; }
+      .discipline,
+      .discipline a { min-height: 10.625rem; }
 
       .discipline + .discipline {
         border-top: 1px solid var(--line);
@@ -417,16 +432,22 @@
 
     <section class="disciplines" id="work" aria-label="Career disciplines">
       <article class="discipline">
-        <span aria-hidden="true">01</span>
-        <h3>Theatre</h3>
+        <a href="#theatre-credits">
+          <span aria-hidden="true">01</span>
+          <h3>Theatre</h3>
+        </a>
       </article>
       <article class="discipline">
-        <span aria-hidden="true">02</span>
-        <h3>Film</h3>
+        <a href="#film-credits">
+          <span aria-hidden="true">02</span>
+          <h3>Film</h3>
+        </a>
       </article>
       <article class="discipline">
-        <span aria-hidden="true">03</span>
-        <h3>Television</h3>
+        <a href="#television-credits">
+          <span aria-hidden="true">03</span>
+          <h3>Television</h3>
+        </a>
       </article>
     </section>
 
@@ -438,7 +459,7 @@
       </div>
 
       <div class="credits-grid">
-        <article class="credit-group">
+        <article class="credit-group" id="theatre-credits">
           <h3>Theatre</h3>
           <ul class="credit-list">
             <li>
@@ -456,7 +477,7 @@
           </ul>
         </article>
 
-        <article class="credit-group">
+        <article class="credit-group" id="film-credits">
           <h3>Film</h3>
           <ul class="credit-list">
             <li>
@@ -466,7 +487,7 @@
           </ul>
         </article>
 
-        <article class="credit-group">
+        <article class="credit-group" id="television-credits">
           <h3>Television</h3>
           <ul class="credit-list">
             <li>
