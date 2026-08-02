@@ -704,12 +704,9 @@
     if ('IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-          }
+          entry.target.classList.toggle('is-visible', entry.isIntersecting);
         });
-      }, { threshold: 0.28, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0.24, rootMargin: '-8% 0px -12% 0px' });
 
       revealTargets.forEach((target) => revealObserver.observe(target));
     } else {
