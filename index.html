@@ -93,6 +93,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(22.5rem, .84fr);
       background:
+        linear-gradient(90deg, rgb(242 235 226 / 96%), rgb(222 208 194 / 82%)),
         radial-gradient(circle at 18% 20%, rgb(255 255 255 / 62%), transparent 35%),
         var(--sand);
     }
@@ -106,7 +107,8 @@
 
     .eyebrow,
     .section-label,
-    .disciplines-line {
+    .disciplines-line,
+    .hero-official {
       color: var(--wine);
       font-family: Arial, Helvetica, sans-serif;
       font-weight: 600;
@@ -129,6 +131,13 @@
       text-wrap: balance;
     }
 
+    .hero-official {
+      margin: 1.25rem 0 0;
+      color: var(--muted);
+      font-size: .68rem;
+      letter-spacing: .24em;
+    }
+
     .identity-tagline {
       margin: 1.45rem 0 .7rem;
       color: var(--wine);
@@ -147,12 +156,19 @@
     }
 
     .hero-tagline {
-      max-width: 34rem;
+      max-width: 36rem;
       margin: 0 0 2.25rem;
       color: var(--muted);
       font-size: clamp(1.1rem, 1.8vw, 1.45rem);
       line-height: 1.55;
       text-wrap: pretty;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 2rem;
+      align-items: center;
     }
 
     .explore {
@@ -164,6 +180,11 @@
       letter-spacing: .16em;
       text-decoration: none;
       text-transform: uppercase;
+    }
+
+    .explore.secondary {
+      color: var(--wine);
+      border-bottom-color: var(--wine);
     }
 
     .portrait-wrap {
@@ -411,10 +432,14 @@
       <div class="hero-copy">
         <p class="eyebrow">Iranian Actress</p>
         <h1 id="page-title">Mina Lakani</h1>
-        <p class="identity-tagline">An Artistic Journey</p>
-        <p class="disciplines-line">Stage · Cinema · Television</p>
-        <p class="hero-tagline">A professional career across theatre, film, and television.</p>
-        <a class="explore" href="#journey">Discover her journey</a>
+        <p class="hero-official">Official Actress Website</p>
+        <p class="identity-tagline">An Artistic Journey Through Stage and Screen</p>
+        <p class="disciplines-line">Theatre · Film · Television</p>
+        <p class="hero-tagline">A cinematic record of a professional acting career shaped by theatre, film, television, and artistic perseverance.</p>
+        <div class="hero-actions">
+          <a class="explore" href="#journey">Discover her journey</a>
+          <a class="explore secondary" href="#credits">View credits</a>
+        </div>
       </div>
 
       <div class="portrait-wrap">
