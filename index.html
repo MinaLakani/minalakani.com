@@ -720,7 +720,7 @@
       const startY = window.scrollY;
       const endY = target.getBoundingClientRect().top + window.scrollY;
       const distance = endY - startY;
-      const duration = 2200;
+      const duration = 1800;
       const startTime = performance.now();
 
       function easeInOutCubic(progress) {
@@ -755,16 +755,16 @@
         setTimeout(() => {
           cinematicScrollTo(target);
           window.history.pushState(null, '', link.getAttribute('href'));
-        }, 360);
+        }, 320);
 
         setTimeout(() => {
           document.body.classList.remove('is-navigating');
           target.classList.add('is-arrival', 'is-visible');
-        }, 1550);
+        }, 1300);
 
         setTimeout(() => {
           target.classList.remove('is-arrival');
-        }, 3800);
+        }, 3300);
       });
     });
   </script>
