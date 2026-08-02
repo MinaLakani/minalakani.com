@@ -752,6 +752,13 @@
         void target.offsetWidth;
         document.body.classList.add('is-navigating');
 
+        if (link.classList.contains('monogram')) {
+          setTimeout(() => {
+            window.location.href = window.location.pathname;
+          }, 520);
+          return;
+        }
+
         setTimeout(() => {
           cinematicScrollTo(target);
           window.history.pushState(null, '', link.getAttribute('href'));
