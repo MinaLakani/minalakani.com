@@ -131,12 +131,6 @@
       transition: opacity 1.15s ease, transform 1.15s ease, filter 1.15s ease;
     }
 
-    .hero.is-scroll-muted {
-      opacity: .34;
-      transform: translateY(-1.25rem);
-      filter: blur(.16rem) saturate(.92);
-    }
-
     .hero-copy {
       display: flex;
       flex-direction: column;
@@ -708,6 +702,8 @@
   <script>
     const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
     const heroSection = document.querySelector('.hero');
+    const heroCopy = document.querySelector('.hero-copy');
+    const portraitWrap = document.querySelector('.portrait-wrap');
     const motionLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 
     if ('IntersectionObserver' in window) {
@@ -722,15 +718,34 @@
       revealTargets.forEach((target) => target.classList.add('is-visible'));
     }
 
-    if (heroSection && 'IntersectionObserver' in window) {
-      const heroObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          heroSection.classList.toggle('is-scroll-muted', !entry.isIntersecting);
-        });
-      }, { threshold: 0.18, rootMargin: '-18% 0px -18% 0px' });
+    let heroMotionFrame = null;
 
-      heroObserver.observe(heroSection);
+    function updateHeroMotion() {
+      if (!heroSection || !heroCopy || !portraitWrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const progress = Math.min(Math.max(window.scrollY / (window.innerHeight * .82), 0), 1);
+      const copyOpacity = 1 - progress * .72;
+      const portraitOpacity = 1 - progress * .58;
+
+      heroCopy.style.opacity = copyOpacity.toFixed(3);
+      heroCopy.style.transform = `translateY(${-progress * 3.75}rem)`;
+      heroCopy.style.filter = `blur(${progress * .16}rem)`;
+      portraitWrap.style.opacity = portraitOpacity.toFixed(3);
+      portraitWrap.style.transform = `translateY(${progress * 2.25}rem) scale(${1 + progress * .018})`;
+      portraitWrap.style.filter = `saturate(${1 - progress * .08}) brightness(${1 - progress * .06}) blur(${progress * .08}rem)`;
     }
+
+    function requestHeroMotionUpdate() {
+      if (heroMotionFrame) return;
+      heroMotionFrame = requestAnimationFrame(() => {
+        heroMotionFrame = null;
+        updateHeroMotion();
+      });
+    }
+
+    updateHeroMotion();
+    window.addEventListener('scroll', requestHeroMotionUpdate, { passive: true });
+    window.addEventListener('resize', requestHeroMotionUpdate, { passive: true });
 
     let activeScrollFrame = null;
     let wheelTargetY = window.scrollY;
