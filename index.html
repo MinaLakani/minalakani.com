@@ -103,6 +103,7 @@
       flex-direction: column;
       justify-content: center;
       padding: 8.125rem clamp(2.125rem, 7vw, 7rem) 5rem;
+      animation: reveal-copy 1.15s ease-out both;
     }
 
     .eyebrow,
@@ -191,6 +192,7 @@
       min-height: 100svh;
       overflow: hidden;
       background: #b7a497;
+      animation: reveal-portrait 1.35s .15s ease-out both;
     }
 
     .portrait-wrap img {
@@ -356,6 +358,30 @@
       text-transform: uppercase;
     }
 
+    @keyframes reveal-copy {
+      from {
+        opacity: 0;
+        transform: translateY(1.25rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes reveal-portrait {
+      from {
+        opacity: 0;
+        filter: saturate(.85) brightness(.92);
+        transform: scale(1.025);
+      }
+      to {
+        opacity: 1;
+        filter: saturate(1) brightness(1);
+        transform: scale(1);
+      }
+    }
+
     @media (max-width: 51.25rem) {
       .site-header {
         position: relative;
@@ -411,6 +437,10 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .hero-copy,
+      .portrait-wrap {
+        animation: none;
+      }
     }
   </style>
 </head>
