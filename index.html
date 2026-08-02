@@ -181,6 +181,13 @@
       letter-spacing: .16em;
       text-decoration: none;
       text-transform: uppercase;
+      transition: color .25s ease, border-color .25s ease, transform .25s ease;
+    }
+
+    .explore:hover {
+      color: var(--wine);
+      border-bottom-color: var(--wine);
+      transform: translateY(-.125rem);
     }
 
     .explore.secondary {
@@ -253,12 +260,13 @@
       justify-content: center;
       padding: 3.4375rem clamp(1.75rem, 5vw, 4.375rem);
       text-decoration: none;
-      transition: background-color .2s ease, color .2s ease;
+      transition: background-color .35s ease, color .35s ease, transform .35s ease;
     }
 
     .discipline a:hover {
       background: rgb(255 255 255 / 28%);
       color: var(--wine);
+      transform: translateY(-.35rem);
     }
 
     .discipline + .discipline { border-left: 1px solid var(--line); }
@@ -345,6 +353,31 @@
       font-size: .85rem;
       line-height: 1.55;
     }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity .95s ease, transform .95s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(1.5rem);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+
+    .reveal-stagger.is-visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: .12s; }
+    .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: .24s; }
 
     footer {
       display: flex;
@@ -441,6 +474,13 @@
       .portrait-wrap {
         animation: none;
       }
+
+      .reveal,
+      .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -477,7 +517,7 @@
       </div>
     </section>
 
-    <section class="journey" id="journey" aria-labelledby="journey-heading">
+    <section class="journey reveal" id="journey" aria-labelledby="journey-heading">
       <p class="section-label">The Journey</p>
       <div>
         <h2 id="journey-heading">Acting found her through a moment of destiny.</h2>
@@ -485,7 +525,7 @@
       </div>
     </section>
 
-    <section class="disciplines" id="work" aria-label="Career disciplines">
+    <section class="disciplines reveal-stagger" id="work" aria-label="Career disciplines">
       <article class="discipline">
         <a href="#theatre-credits">
           <span aria-hidden="true">01</span>
@@ -506,14 +546,14 @@
       </article>
     </section>
 
-    <section class="credits" id="credits" aria-labelledby="credits-heading">
+    <section class="credits reveal" id="credits" aria-labelledby="credits-heading">
       <div class="credits-header">
         <p class="section-label">Credits</p>
         <h2 id="credits-heading">Selected acting work across theatre, film, and television.</h2>
         <p>A concise record of confirmed stage and screen credits from Mina Lakani's professional career.</p>
       </div>
 
-      <div class="credits-grid">
+      <div class="credits-grid reveal-stagger">
         <article class="credit-group" id="theatre-credits">
           <h3>Theatre</h3>
           <ul class="credit-list">
@@ -563,5 +603,24 @@
     <span>Official website of Mina Lakani</span>
     <span>© 2026 Mina Lakani. All rights reserved.</span>
   </footer>
+
+  <script>
+    const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+    } else {
+      revealTargets.forEach((target) => target.classList.add('is-visible'));
+    }
+  </script>
 </body>
 </html>
