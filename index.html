@@ -71,6 +71,7 @@
       font-size: .95rem;
       letter-spacing: .08em;
       text-decoration: none;
+      animation: reveal-mark .9s ease-out both;
     }
 
     .site-nav {
@@ -103,8 +104,21 @@
       flex-direction: column;
       justify-content: center;
       padding: 8.125rem clamp(2.125rem, 7vw, 7rem) 5rem;
-      animation: reveal-copy 1.15s ease-out both;
     }
+
+    .hero-copy > * {
+      opacity: 0;
+      transform: translateY(1.35rem);
+      animation: reveal-sequence .95s ease-out both;
+    }
+
+    .hero-copy > *:nth-child(1) { animation-delay: .45s; }
+    .hero-copy > *:nth-child(2) { animation-delay: .75s; }
+    .hero-copy > *:nth-child(3) { animation-delay: 1.05s; }
+    .hero-copy > *:nth-child(4) { animation-delay: 1.32s; }
+    .hero-copy > *:nth-child(5) { animation-delay: 1.55s; }
+    .hero-copy > *:nth-child(6) { animation-delay: 1.82s; }
+    .hero-copy > *:nth-child(7) { animation-delay: 2.08s; }
 
     .eyebrow,
     .section-label,
@@ -199,7 +213,7 @@
       min-height: 100svh;
       overflow: hidden;
       background: #b7a497;
-      animation: reveal-portrait 1.35s .15s ease-out both;
+      animation: reveal-portrait 1.55s 1.42s ease-out both;
     }
 
     .portrait-wrap img {
@@ -403,10 +417,21 @@
       text-transform: uppercase;
     }
 
-    @keyframes reveal-copy {
+    @keyframes reveal-mark {
       from {
         opacity: 0;
-        transform: translateY(1.25rem);
+        transform: scale(.86);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes reveal-sequence {
+      from {
+        opacity: 0;
+        transform: translateY(1.35rem);
       }
       to {
         opacity: 1;
@@ -482,9 +507,13 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .monogram,
       .hero-copy,
+      .hero-copy > *,
       .portrait-wrap {
         animation: none;
+        opacity: 1;
+        transform: none;
       }
 
       .reveal,
