@@ -19,7 +19,7 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     body {
       margin: 0;
@@ -37,10 +37,21 @@
       pointer-events: none;
       background: rgb(242 235 226 / 76%);
       opacity: 0;
-      transition: opacity .55s ease;
+      transition: opacity .65s ease;
     }
 
     body.is-navigating::before { opacity: 1; }
+
+    main {
+      transition: opacity .65s ease, transform .65s ease, filter .65s ease;
+      transform-origin: center top;
+    }
+
+    body.is-navigating main {
+      opacity: .54;
+      transform: translateY(.45rem) scale(.998);
+      filter: blur(.04rem);
+    }
 
     a { color: inherit; }
 
@@ -100,6 +111,12 @@
       letter-spacing: .13em;
       text-decoration: none;
       text-transform: uppercase;
+      transition: color .35s ease, transform .35s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--wine);
+      transform: translateY(-.16rem);
     }
 
     .hero {
@@ -363,7 +380,7 @@
     .journey.is-arrival,
     .disciplines.is-arrival,
     .credits.is-arrival {
-      animation: arrival-wash 1.45s ease-out both;
+      animation: arrival-wash 1.65s ease-out both;
     }
 
     .credit-group h3 {
@@ -477,7 +494,7 @@
 
     @keyframes arrival-wash {
       0% { filter: brightness(1); }
-      35% { filter: brightness(1.06); }
+      35% { filter: brightness(1.08); }
       100% { filter: brightness(1); }
     }
 
@@ -545,6 +562,7 @@
         transform: none;
       }
 
+      main,
       .reveal,
       .reveal-stagger > * {
         opacity: 1;
@@ -702,7 +720,7 @@
       const startY = window.scrollY;
       const endY = target.getBoundingClientRect().top + window.scrollY;
       const distance = endY - startY;
-      const duration = 1650;
+      const duration = 2200;
       const startTime = performance.now();
 
       function easeInOutCubic(progress) {
@@ -731,21 +749,22 @@
 
         event.preventDefault();
         target.classList.remove('is-arrival');
+        void target.offsetWidth;
         document.body.classList.add('is-navigating');
 
         setTimeout(() => {
           cinematicScrollTo(target);
           window.history.pushState(null, '', link.getAttribute('href'));
-        }, 280);
+        }, 360);
 
         setTimeout(() => {
           document.body.classList.remove('is-navigating');
           target.classList.add('is-arrival', 'is-visible');
-        }, 1180);
+        }, 1550);
 
         setTimeout(() => {
           target.classList.remove('is-arrival');
-        }, 3100);
+        }, 3800);
       });
     });
   </script>
