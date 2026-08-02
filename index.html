@@ -128,6 +128,13 @@
         radial-gradient(circle at 18% 20%, rgb(255 255 255 / 62%), transparent 35%),
         var(--sand);
       scroll-margin-top: 0;
+      transition: opacity 1.15s ease, transform 1.15s ease, filter 1.15s ease;
+    }
+
+    .hero.is-scroll-muted {
+      opacity: .34;
+      transform: translateY(-1.25rem);
+      filter: blur(.16rem) saturate(.92);
     }
 
     .hero-copy {
@@ -563,6 +570,7 @@
       }
 
       main,
+      .hero,
       .reveal,
       .reveal-stagger > * {
         opacity: 1;
@@ -699,6 +707,7 @@
 
   <script>
     const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
+    const heroSection = document.querySelector('.hero');
     const motionLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 
     if ('IntersectionObserver' in window) {
@@ -711,6 +720,16 @@
       revealTargets.forEach((target) => revealObserver.observe(target));
     } else {
       revealTargets.forEach((target) => target.classList.add('is-visible'));
+    }
+
+    if (heroSection && 'IntersectionObserver' in window) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          heroSection.classList.toggle('is-scroll-muted', !entry.isIntersecting);
+        });
+      }, { threshold: 0.18, rootMargin: '-18% 0px -18% 0px' });
+
+      heroObserver.observe(heroSection);
     }
 
     let activeScrollFrame = null;
