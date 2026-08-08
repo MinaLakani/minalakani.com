@@ -417,6 +417,25 @@
       line-height: 1.55;
     }
 
+    .credit-meta {
+      display: block;
+      margin-top: .2rem;
+      color: var(--wine);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      line-height: 1.55;
+      text-transform: uppercase;
+    }
+
+    .credits-note {
+      max-width: 46rem;
+      margin: clamp(2.25rem, 5vw, 4rem) 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.2vw, 1.125rem);
+      line-height: 1.7;
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(4rem);
@@ -644,8 +663,8 @@
     <section class="credits reveal" id="credits" aria-labelledby="credits-heading">
       <div class="credits-header">
         <p class="section-label">Credits</p>
-        <h2 id="credits-heading">Selected acting work across theatre, film, and television.</h2>
-        <p>A concise record of confirmed stage and screen credits from Mina Lakani's professional career.</p>
+        <h2 id="credits-heading">Selected acting work across theatre, film, television, and screen projects.</h2>
+        <p>A concise record of confirmed and selected credits from Mina Lakani's professional career.</p>
       </div>
 
       <div class="credits-grid reveal-stagger">
@@ -654,15 +673,18 @@
           <ul class="credit-list">
             <li>
               <span class="credit-title">Hamlet</span>
+              <span class="credit-meta">Tehran City Theater</span>
               <span class="credit-note">Professional Theatre Production</span>
             </li>
             <li>
               <span class="credit-title">The Seagull</span>
-              <span class="credit-note">Professional Theatre Production</span>
+              <span class="credit-meta">Tehran City Theater</span>
+              <span class="credit-note">Professional Theatre Production · Anton Chekhov · Directed by Akbar Zanjanpour</span>
             </li>
             <li>
               <span class="credit-title">Striptease</span>
-              <span class="credit-note">Stage Production, California and Canada</span>
+              <span class="credit-meta">California and Canada</span>
+              <span class="credit-note">Stage Production</span>
             </li>
           </ul>
         </article>
@@ -672,7 +694,8 @@
           <ul class="credit-list">
             <li>
               <span class="credit-title">Rooz-e Fereshteh</span>
-              <span class="credit-note">Day of the Angel, Feature Film</span>
+              <span class="credit-meta">Day of the Angel</span>
+              <span class="credit-note">Feature Film</span>
             </li>
           </ul>
         </article>
@@ -685,12 +708,37 @@
               <span class="credit-note">Television Credit</span>
             </li>
             <li>
+              <span class="credit-title">Hasti</span>
+              <span class="credit-meta">Telefilm · 2008</span>
+              <span class="credit-note">Directed by Mahmoud Moazami · Produced by Mohsen Badrlou · Lead Role</span>
+            </li>
+            <li>
               <span class="credit-title">Tavan</span>
               <span class="credit-note">Television Series</span>
+            </li>
+            <li>
+              <span class="credit-title">Kasb-o-Kar-e Aghaye Fabrizi</span>
+              <span class="credit-meta">Mr. Fabrizi's Business</span>
+              <span class="credit-note">Tele-Theatre Credit</span>
             </li>
           </ul>
         </article>
       </div>
+
+      <div class="credits-grid reveal-stagger" style="margin-top: clamp(2.5rem, 5vw, 4.5rem);">
+        <article class="credit-group">
+          <h3>Screen and Video</h3>
+          <ul class="credit-list">
+            <li>
+              <span class="credit-title">Jonoon</span>
+              <span class="credit-meta">جنون</span>
+              <span class="credit-note">Music Video / Screen Project</span>
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="credits-note">Additional credits can be added as documentation is confirmed. This page is intentionally selective and factual, so the record remains professional and accurate.</p>
     </section>
   </main>
 
@@ -717,35 +765,6 @@
     } else {
       revealTargets.forEach((target) => target.classList.add('is-visible'));
     }
-
-    let heroMotionFrame = null;
-
-    function updateHeroMotion() {
-      if (!heroSection || !heroCopy || !portraitWrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      const progress = Math.min(Math.max(window.scrollY / (window.innerHeight * .9), 0), 1);
-      const copyOpacity = 1 - progress * .22;
-      const portraitOpacity = 1 - progress * .16;
-
-      heroCopy.style.opacity = copyOpacity.toFixed(3);
-      heroCopy.style.transform = `translateY(${-progress * 1.35}rem)`;
-      heroCopy.style.filter = 'none';
-      portraitWrap.style.opacity = portraitOpacity.toFixed(3);
-      portraitWrap.style.transform = `translateY(${progress * .85}rem) scale(${1 + progress * .008})`;
-      portraitWrap.style.filter = `saturate(${1 - progress * .03}) brightness(${1 - progress * .025})`;
-    }
-
-    function requestHeroMotionUpdate() {
-      if (heroMotionFrame) return;
-      heroMotionFrame = requestAnimationFrame(() => {
-        heroMotionFrame = null;
-        updateHeroMotion();
-      });
-    }
-
-    updateHeroMotion();
-    window.addEventListener('scroll', requestHeroMotionUpdate, { passive: true });
-    window.addEventListener('resize', requestHeroMotionUpdate, { passive: true });
 
     let activeScrollFrame = null;
     let wheelTargetY = window.scrollY;
