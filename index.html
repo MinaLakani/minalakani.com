@@ -550,6 +550,15 @@
 
       .disciplines { grid-template-columns: 1fr; }
       .credits-grid { grid-template-columns: 1fr; }
+
+      .credits.reveal,
+      .credits .credits-grid.reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+
       .discipline,
       .discipline a { min-height: 10.625rem; }
 
