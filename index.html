@@ -551,12 +551,24 @@
       .disciplines { grid-template-columns: 1fr; }
       .credits-grid { grid-template-columns: 1fr; }
 
-      .credits.reveal,
-      .credits .credits-grid.reveal-stagger > * {
+      .credits.reveal {
         opacity: 1;
         transform: none;
         filter: none;
         transition: none;
+      }
+
+      .mobile-credit-reveal {
+        opacity: 0;
+        transform: translateY(2.75rem);
+        filter: blur(.18rem);
+        transition: opacity 1.15s ease, transform 1.15s ease, filter 1.15s ease;
+      }
+
+      .mobile-credit-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
       }
 
       .discipline,
@@ -819,7 +831,18 @@
   </footer>
 
   <script>
-    const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
+    const mobileLayout = window.matchMedia('(max-width: 51.25rem)').matches;
+    const mobileCreditTargets = document.querySelectorAll('.credits-header, .credit-group, .credits-note');
+
+    if (mobileLayout) {
+      mobileCreditTargets.forEach((target) => target.classList.add('mobile-credit-reveal'));
+    }
+
+    const revealTargets = document.querySelectorAll(
+      mobileLayout
+        ? '.reveal:not(.credits), .reveal-stagger:not(.credits-grid), .mobile-credit-reveal'
+        : '.reveal, .reveal-stagger'
+    );
     const heroSection = document.querySelector('.hero');
     const heroCopy = document.querySelector('.hero-copy');
     const portraitWrap = document.querySelector('.portrait-wrap');
@@ -830,7 +853,9 @@
         entries.forEach((entry) => {
           entry.target.classList.toggle('is-visible', entry.isIntersecting);
         });
-      }, { threshold: 0.24, rootMargin: '-8% 0px -12% 0px' });
+      }, mobileLayout
+        ? { threshold: 0.06, rootMargin: '0px 0px -8% 0px' }
+        : { threshold: 0.24, rootMargin: '-8% 0px -12% 0px' });
 
       revealTargets.forEach((target) => revealObserver.observe(target));
     } else {
