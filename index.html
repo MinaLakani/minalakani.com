@@ -47,8 +47,9 @@
     .explore:hover { color:var(--wine); border-bottom-color:var(--wine); transform:translateY(-.12rem); }
     .explore.secondary { color:var(--wine); border-bottom-color:var(--wine); }
 
-    .portrait-wrap { position:relative; z-index:1; min-height:100svh; overflow:hidden; background:#b7a497; opacity:.38; transform:scale(1.025); animation:reveal-portrait 1.45s .12s cubic-bezier(.2,.72,.2,1) both; }
-    .portrait-wrap img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 22%; }
+    .portrait-wrap { position:relative; z-index:1; min-height:100svh; overflow:hidden; background:#b7a497; }
+    .portrait-wrap img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 22%; opacity:.18; filter:saturate(.78) brightness(.86); transform:scale(1.045); transition:opacity 1.35s cubic-bezier(.2,.72,.2,1),filter 1.35s cubic-bezier(.2,.72,.2,1),transform 1.65s cubic-bezier(.2,.72,.2,1); }
+    .portrait-wrap.is-loaded img { opacity:1; filter:none; transform:scale(1); }
 
     .journey { display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(3.125rem,9vw,9.375rem); padding:clamp(5.625rem,12vw,10.625rem) clamp(1.75rem,8vw,8.125rem); scroll-margin-top:2rem; }
     .section-label { margin:.375rem 0; font-size:.6875rem; letter-spacing:.22em; }
@@ -84,7 +85,6 @@
 
     @keyframes header-arrival { from { opacity:0; transform:translateY(-.6rem); } to { opacity:1; transform:none; } }
     @keyframes reveal-sequence { from { opacity:0; transform:translateY(1.35rem); } to { opacity:1; transform:translateY(0); } }
-    @keyframes reveal-portrait { from { opacity:.38; filter:saturate(.82) brightness(.9); transform:scale(1.025); } to { opacity:1; filter:none; transform:scale(1); } }
     @keyframes cinematic-wash { 0% { opacity:1; transform:translateX(0); } 60% { opacity:.45; } 100% { opacity:0; transform:translateX(18%); } }
 
     @media (max-width:51.25rem) {
@@ -104,7 +104,7 @@
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
       *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-      .hero-copy > *,.portrait-wrap,.reveal,.reveal-stagger > * { opacity:1; transform:none; filter:none; }
+      .hero-copy > *,.portrait-wrap,.portrait-wrap img,.reveal,.reveal-stagger > * { opacity:1; transform:none; filter:none; }
       .hero::after { display:none; }
     }
   </style>
@@ -181,6 +181,14 @@
   <footer><span>Official website of Mina Lakani</span><span>© 2026 Mina Lakani. All rights reserved.</span></footer>
 
   <script>
+    const portraitWrap = document.querySelector('.portrait-wrap');
+    const portraitImage = portraitWrap?.querySelector('img');
+    const revealPortrait = () => requestAnimationFrame(() => portraitWrap?.classList.add('is-loaded'));
+    if (portraitImage) {
+      if (portraitImage.complete) revealPortrait();
+      else portraitImage.addEventListener('load', revealPortrait, { once:true });
+    }
+
     const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
     if ('IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries) => {
