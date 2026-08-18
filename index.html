@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The official website of Iranian actress Mina Lakani, featuring her work across theatre, film, and television.">
   <meta name="theme-color" content="#ded0c2">
+  <link rel="preload" as="image" href="mina-lakani.png" fetchpriority="high">
   <title>Mina Lakani | Actress</title>
   <style>
     :root {
@@ -19,7 +20,7 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: auto; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -29,36 +30,8 @@
       text-rendering: optimizeLegibility;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      z-index: 20;
-      inset: 0;
-      pointer-events: none;
-      background: rgb(242 235 226 / 76%);
-      opacity: 0;
-      transition: opacity .65s ease;
-    }
-
-    body.is-navigating::before { opacity: 1; }
-
-    main {
-      transition: opacity .65s ease, transform .65s ease, filter .65s ease;
-      transform-origin: center top;
-    }
-
-    body.is-navigating main {
-      opacity: .54;
-      transform: translateY(.45rem) scale(.998);
-      filter: blur(.04rem);
-    }
-
     a { color: inherit; }
-
-    a:focus-visible {
-      outline: 3px solid var(--wine);
-      outline-offset: 5px;
-    }
+    a:focus-visible { outline: 3px solid var(--wine); outline-offset: 5px; }
 
     .skip-link {
       position: fixed;
@@ -70,7 +43,6 @@
       background: var(--ink);
       transform: translateY(-200%);
     }
-
     .skip-link:focus { transform: translateY(0); }
 
     .site-header {
@@ -95,7 +67,7 @@
       font-size: .95rem;
       letter-spacing: .08em;
       text-decoration: none;
-      animation: reveal-mark .9s ease-out both;
+      animation: reveal-mark .6s ease-out both;
     }
 
     .site-nav {
@@ -111,13 +83,9 @@
       letter-spacing: .13em;
       text-decoration: none;
       text-transform: uppercase;
-      transition: color .35s ease, transform .35s ease;
+      transition: color .25s ease, transform .25s ease;
     }
-
-    .site-nav a:hover {
-      color: var(--wine);
-      transform: translateY(-.16rem);
-    }
+    .site-nav a:hover { color: var(--wine); transform: translateY(-.12rem); }
 
     .hero {
       min-height: 100svh;
@@ -128,7 +96,6 @@
         radial-gradient(circle at 18% 20%, rgb(255 255 255 / 62%), transparent 35%),
         var(--sand);
       scroll-margin-top: 0;
-      transition: opacity 1.15s ease, transform 1.15s ease, filter 1.15s ease;
     }
 
     .hero-copy {
@@ -139,34 +106,25 @@
     }
 
     .hero-copy > * {
-      opacity: 0;
-      transform: translateY(1.35rem);
-      animation: reveal-sequence .95s ease-out both;
+      opacity: .78;
+      transform: translateY(.55rem);
+      animation: reveal-sequence .68s ease-out both;
     }
+    .hero-copy > *:nth-child(1) { animation-delay: .02s; }
+    .hero-copy > *:nth-child(2) { animation-delay: .07s; }
+    .hero-copy > *:nth-child(3) { animation-delay: .12s; }
+    .hero-copy > *:nth-child(4) { animation-delay: .17s; }
+    .hero-copy > *:nth-child(5) { animation-delay: .22s; }
+    .hero-copy > *:nth-child(6) { animation-delay: .27s; }
+    .hero-copy > *:nth-child(7) { animation-delay: .32s; }
 
-    .hero-copy > *:nth-child(1) { animation-delay: .45s; }
-    .hero-copy > *:nth-child(2) { animation-delay: .75s; }
-    .hero-copy > *:nth-child(3) { animation-delay: 1.05s; }
-    .hero-copy > *:nth-child(4) { animation-delay: 1.32s; }
-    .hero-copy > *:nth-child(5) { animation-delay: 1.55s; }
-    .hero-copy > *:nth-child(6) { animation-delay: 1.82s; }
-    .hero-copy > *:nth-child(7) { animation-delay: 2.08s; }
-
-    .eyebrow,
-    .section-label,
-    .disciplines-line,
-    .hero-official {
+    .eyebrow, .section-label, .disciplines-line, .hero-official {
       color: var(--wine);
       font-family: Arial, Helvetica, sans-serif;
       font-weight: 600;
       text-transform: uppercase;
     }
-
-    .eyebrow {
-      margin: 0 0 1.5rem;
-      font-size: .75rem;
-      letter-spacing: .24em;
-    }
+    .eyebrow { margin: 0 0 1.5rem; font-size: .75rem; letter-spacing: .24em; }
 
     h1 {
       margin: 0;
@@ -178,13 +136,7 @@
       text-wrap: balance;
     }
 
-    .hero-official {
-      margin: 1.25rem 0 0;
-      color: var(--muted);
-      font-size: .68rem;
-      letter-spacing: .24em;
-    }
-
+    .hero-official { margin: 1.25rem 0 0; color: var(--muted); font-size: .68rem; letter-spacing: .24em; }
     .identity-tagline {
       margin: 1.45rem 0 .7rem;
       color: var(--wine);
@@ -193,30 +145,9 @@
       font-style: italic;
       letter-spacing: .08em;
     }
-
-    .disciplines-line {
-      margin: 0 0 2.25rem;
-      color: var(--muted);
-      font-size: .64rem;
-      letter-spacing: .25em;
-      line-height: 1.8;
-    }
-
-    .hero-tagline {
-      max-width: 36rem;
-      margin: 0 0 2.25rem;
-      color: var(--muted);
-      font-size: clamp(1.1rem, 1.8vw, 1.45rem);
-      line-height: 1.55;
-      text-wrap: pretty;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem 2rem;
-      align-items: center;
-    }
+    .disciplines-line { margin: 0 0 2.25rem; color: var(--muted); font-size: .64rem; letter-spacing: .25em; line-height: 1.8; }
+    .hero-tagline { max-width: 36rem; margin: 0 0 2.25rem; color: var(--muted); font-size: clamp(1.1rem, 1.8vw, 1.45rem); line-height: 1.55; text-wrap: pretty; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; align-items: center; }
 
     .explore {
       align-self: flex-start;
@@ -227,34 +158,19 @@
       letter-spacing: .16em;
       text-decoration: none;
       text-transform: uppercase;
-      transition: color .35s ease, border-color .35s ease, transform .35s ease;
+      transition: color .25s ease, border-color .25s ease, transform .25s ease;
     }
-
-    .explore:hover {
-      color: var(--wine);
-      border-bottom-color: var(--wine);
-      transform: translateY(-.18rem);
-    }
-
-    .explore.secondary {
-      color: var(--wine);
-      border-bottom-color: var(--wine);
-    }
+    .explore:hover { color: var(--wine); border-bottom-color: var(--wine); transform: translateY(-.12rem); }
+    .explore.secondary { color: var(--wine); border-bottom-color: var(--wine); }
 
     .portrait-wrap {
       min-height: 100svh;
       overflow: hidden;
       background: #b7a497;
-      animation: reveal-portrait 1.55s 1.42s ease-out both;
+      opacity: .82;
+      animation: reveal-portrait .78s .05s ease-out both;
     }
-
-    .portrait-wrap img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center 22%;
-    }
+    .portrait-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 22%; }
 
     .journey {
       display: grid;
@@ -263,42 +179,12 @@
       padding: clamp(5.625rem, 12vw, 10.625rem) clamp(1.75rem, 8vw, 8.125rem);
       scroll-margin-top: 2rem;
     }
+    .section-label { margin: .375rem 0; font-size: .6875rem; letter-spacing: .22em; }
+    .journey h2 { max-width: 47.5rem; margin: 0 0 2.125rem; font-size: clamp(2rem, 3.6vw, 3.25rem); font-weight: 400; line-height: 1.08; text-wrap: balance; }
+    .journey p { max-width: 45rem; margin: 0; color: var(--muted); font-size: clamp(1.0625rem, 1.35vw, 1.25rem); line-height: 1.7; text-wrap: pretty; }
 
-    .section-label {
-      margin: .375rem 0;
-      font-size: .6875rem;
-      letter-spacing: .22em;
-    }
-
-    .journey h2 {
-      max-width: 47.5rem;
-      margin: 0 0 2.125rem;
-      font-size: clamp(2rem, 3.6vw, 3.25rem);
-      font-weight: 400;
-      line-height: 1.08;
-      text-wrap: balance;
-    }
-
-    .journey p {
-      max-width: 45rem;
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
-      line-height: 1.7;
-      text-wrap: pretty;
-    }
-
-    .disciplines {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-block: 1px solid var(--line);
-      scroll-margin-top: 2rem;
-    }
-
-    .discipline {
-      min-height: 15rem;
-    }
-
+    .disciplines { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); scroll-margin-top: 2rem; }
+    .discipline { min-height: 15rem; }
     .discipline a {
       display: flex;
       min-height: 15rem;
@@ -306,164 +192,34 @@
       justify-content: center;
       padding: 3.4375rem clamp(1.75rem, 5vw, 4.375rem);
       text-decoration: none;
-      transition: background-color .45s ease, color .45s ease, transform .45s ease, box-shadow .45s ease;
+      transition: background-color .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease;
     }
-
-    .discipline a:hover {
-      background: rgb(255 255 255 / 38%);
-      box-shadow: inset 0 0 0 1px rgb(113 63 69 / 18%);
-      color: var(--wine);
-      transform: translateY(-.55rem);
-    }
-
+    .discipline a:hover { background: rgb(255 255 255 / 38%); box-shadow: inset 0 0 0 1px rgb(113 63 69 / 18%); color: var(--wine); transform: translateY(-.3rem); }
     .discipline + .discipline { border-left: 1px solid var(--line); }
+    .discipline span { color: var(--wine); font-family: Arial, Helvetica, sans-serif; font-size: .6875rem; letter-spacing: .18em; }
+    .discipline h3 { margin: 3.4375rem 0 0; font-size: clamp(1.75rem, 3vw, 2.625rem); font-weight: 400; }
 
-    .discipline span {
-      color: var(--wine);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: .6875rem;
-      letter-spacing: .18em;
+    .credits { padding: clamp(5.625rem, 12vw, 10rem) clamp(1.75rem, 8vw, 8.125rem); border-bottom: 1px solid var(--line); scroll-margin-top: 2rem; }
+    .credits-header { max-width: 44rem; margin-bottom: clamp(3rem, 6vw, 5rem); }
+    .credits h2 { margin: 0 0 1rem; font-size: clamp(2rem, 3.6vw, 3.25rem); font-weight: 400; line-height: 1.08; text-wrap: balance; }
+    .credits-header p { margin: 0; color: var(--muted); font-size: clamp(1.0625rem, 1.35vw, 1.25rem); line-height: 1.65; }
+    .credits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 4.5rem); }
+    .credit-group { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+    .credit-group h3 { margin: 0 0 1.5rem; color: var(--wine); font-family: Arial, Helvetica, sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+    .credit-list { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+    .credit-title { display: block; font-size: clamp(1.25rem, 2vw, 1.75rem); line-height: 1.2; }
+    .credit-note { display: block; margin-top: .35rem; color: var(--muted); font-family: Arial, Helvetica, sans-serif; font-size: .85rem; line-height: 1.55; }
+    .credit-meta { display: block; margin-top: .2rem; color: var(--wine); font-family: Arial, Helvetica, sans-serif; font-size: .72rem; letter-spacing: .08em; line-height: 1.55; text-transform: uppercase; }
+    .credits-note { max-width: 46rem; margin: clamp(2.25rem, 5vw, 4rem) 0 0; color: var(--muted); font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; }
+
+    .reveal, .reveal-stagger > * {
+      opacity: .92;
+      transform: translateY(.75rem);
+      transition: opacity .42s ease, transform .42s ease;
     }
-
-    .discipline h3 {
-      margin: 3.4375rem 0 0;
-      font-size: clamp(1.75rem, 3vw, 2.625rem);
-      font-weight: 400;
-    }
-
-    .credits {
-      padding: clamp(5.625rem, 12vw, 10rem) clamp(1.75rem, 8vw, 8.125rem);
-      border-bottom: 1px solid var(--line);
-      scroll-margin-top: 2rem;
-    }
-
-    .credits-header {
-      max-width: 44rem;
-      margin-bottom: clamp(3rem, 6vw, 5rem);
-    }
-
-    .credits h2 {
-      margin: 0 0 1rem;
-      font-size: clamp(2rem, 3.6vw, 3.25rem);
-      font-weight: 400;
-      line-height: 1.08;
-      text-wrap: balance;
-    }
-
-    .credits-header p {
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
-      line-height: 1.65;
-    }
-
-    .credits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(2rem, 4vw, 4.5rem);
-    }
-
-    .credit-group {
-      border-top: 1px solid var(--line);
-      padding-top: 1.5rem;
-      transition: background-color .75s ease, box-shadow .75s ease, padding-inline .75s ease, transform .75s ease;
-    }
-
-    .credit-group:target,
-    .credit-group.is-arrival {
-      padding-inline: 1rem;
-      background: rgb(255 255 255 / 46%);
-      box-shadow: -1rem 0 0 rgb(113 63 69 / 20%);
-      transform: translateY(-.45rem);
-    }
-
-    .hero.is-arrival,
-    .journey.is-arrival,
-    .disciplines.is-arrival,
-    .credits.is-arrival {
-      animation: arrival-wash 1.65s ease-out both;
-    }
-
-    .credit-group h3 {
-      margin: 0 0 1.5rem;
-      color: var(--wine);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .credit-list {
-      display: grid;
-      gap: 1.25rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .credit-title {
-      display: block;
-      font-size: clamp(1.25rem, 2vw, 1.75rem);
-      line-height: 1.2;
-    }
-
-    .credit-note {
-      display: block;
-      margin-top: .35rem;
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: .85rem;
-      line-height: 1.55;
-    }
-
-    .credit-meta {
-      display: block;
-      margin-top: .2rem;
-      color: var(--wine);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: .72rem;
-      letter-spacing: .08em;
-      line-height: 1.55;
-      text-transform: uppercase;
-    }
-
-    .credits-note {
-      max-width: 46rem;
-      margin: clamp(2.25rem, 5vw, 4rem) 0 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.2vw, 1.125rem);
-      line-height: 1.7;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(4rem);
-      filter: blur(.25rem);
-      transition: opacity 1.35s ease, transform 1.35s ease, filter 1.35s ease;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-
-    .reveal-stagger > * {
-      opacity: 0;
-      transform: translateY(3rem);
-      filter: blur(.2rem);
-      transition: opacity 1.15s ease, transform 1.15s ease, filter 1.15s ease;
-    }
-
-    .reveal-stagger.is-visible > * {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-
-    .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: .22s; }
-    .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: .44s; }
+    .reveal.is-visible, .reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+    .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: .06s; }
+    .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: .12s; }
 
     footer {
       display: flex;
@@ -477,145 +233,33 @@
       text-transform: uppercase;
     }
 
-    @keyframes reveal-mark {
-      from {
-        opacity: 0;
-        transform: scale(.86);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes reveal-sequence {
-      from {
-        opacity: 0;
-        transform: translateY(1.35rem);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes reveal-portrait {
-      from {
-        opacity: 0;
-        filter: saturate(.85) brightness(.92);
-        transform: scale(1.025);
-      }
-      to {
-        opacity: 1;
-        filter: saturate(1) brightness(1);
-        transform: scale(1);
-      }
-    }
-
-    @keyframes arrival-wash {
-      0% { filter: brightness(1); }
-      35% { filter: brightness(1.08); }
-      100% { filter: brightness(1); }
-    }
+    @keyframes reveal-mark { from { opacity: .65; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes reveal-sequence { from { opacity: .78; transform: translateY(.55rem); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes reveal-portrait { from { opacity: .82; filter: saturate(.94) brightness(.97); transform: scale(1.008); } to { opacity: 1; filter: none; transform: scale(1); } }
 
     @media (max-width: 51.25rem) {
-      .site-header {
-        position: relative;
-        align-items: flex-start;
-        background: var(--sand);
-      }
-
-      .site-nav {
-        max-width: 17rem;
-        row-gap: .8rem;
-      }
-
-      .hero {
-        min-height: auto;
-        grid-template-columns: 1fr;
-      }
-
+      .site-header { position: relative; align-items: flex-start; background: var(--sand); }
+      .site-nav { max-width: 17rem; row-gap: .8rem; }
+      .hero { min-height: auto; grid-template-columns: 1fr; }
       .hero-copy { padding: 4.375rem 1.75rem 3.75rem; }
-
-      .portrait-wrap {
-        min-height: auto;
-        aspect-ratio: 4 / 5;
-      }
-
-      .journey {
-        grid-template-columns: 1fr;
-        gap: 1.875rem;
-        padding-block: 4.5rem;
-      }
-
-      .disciplines { grid-template-columns: 1fr; }
-      .credits-grid { grid-template-columns: 1fr; }
-
-      .credits.reveal {
-        opacity: 1;
-        transform: none;
-        filter: none;
-        transition: none;
-      }
-
-      .mobile-credit-reveal {
-        opacity: 0;
-        transform: translateY(2.75rem);
-        filter: blur(.18rem);
-        transition: opacity 1.15s ease, transform 1.15s ease, filter 1.15s ease;
-      }
-
-      .mobile-credit-reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-
-      .discipline,
-      .discipline a { min-height: 10.625rem; }
-
-      .discipline + .discipline {
-        border-top: 1px solid var(--line);
-        border-left: 0;
-      }
-
+      .portrait-wrap { min-height: auto; aspect-ratio: 4 / 5; }
+      .journey { grid-template-columns: 1fr; gap: 1.875rem; padding-block: 4.5rem; }
+      .disciplines, .credits-grid { grid-template-columns: 1fr; }
+      .discipline, .discipline a { min-height: 10.625rem; }
+      .discipline + .discipline { border-top: 1px solid var(--line); border-left: 0; }
       .discipline h3 { margin-top: 1.75rem; }
       footer { flex-direction: column; }
     }
 
     @media (max-width: 35rem) {
-      .site-header {
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
+      .site-header { flex-direction: column; gap: 1.25rem; }
       .site-nav { justify-content: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .monogram,
-      .hero-copy,
-      .hero-copy > *,
-      .portrait-wrap {
-        animation: none;
-        opacity: 1;
-        transform: none;
-      }
-
-      main,
-      .hero,
-      .reveal,
-      .reveal-stagger > * {
-        opacity: 1;
-        transform: none;
-        filter: none;
-        transition: none;
-      }
-
-      body::before {
-        display: none;
-      }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .hero-copy > *, .portrait-wrap, .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; }
     }
   </style>
 </head>
@@ -661,24 +305,9 @@
     </section>
 
     <section class="disciplines reveal-stagger" id="work" aria-label="Career disciplines">
-      <article class="discipline">
-        <a href="#theatre-credits">
-          <span aria-hidden="true">01</span>
-          <h3>Theatre</h3>
-        </a>
-      </article>
-      <article class="discipline">
-        <a href="#film-credits">
-          <span aria-hidden="true">02</span>
-          <h3>Film</h3>
-        </a>
-      </article>
-      <article class="discipline">
-        <a href="#television-credits">
-          <span aria-hidden="true">03</span>
-          <h3>Television</h3>
-        </a>
-      </article>
+      <article class="discipline"><a href="#theatre-credits"><span aria-hidden="true">01</span><h3>Theatre</h3></a></article>
+      <article class="discipline"><a href="#film-credits"><span aria-hidden="true">02</span><h3>Film</h3></a></article>
+      <article class="discipline"><a href="#television-credits"><span aria-hidden="true">03</span><h3>Television</h3></a></article>
     </section>
 
     <section class="credits reveal" id="credits" aria-labelledby="credits-heading">
@@ -692,118 +321,38 @@
         <article class="credit-group" id="theatre-credits">
           <h3>Theatre</h3>
           <ul class="credit-list">
-            <li>
-              <span class="credit-title">Hamlet</span>
-              <span class="credit-meta">1991</span>
-              <span class="credit-note">Professional Stage Debut · Directed by Ghotbeddin Sadeghi</span>
-            </li>
-            <li>
-              <span class="credit-title">The Seagull</span>
-              <span class="credit-meta">1996</span>
-              <span class="credit-note">Stage Production</span>
-            </li>
-            <li>
-              <span class="credit-title">Striptease</span>
-              <span class="credit-meta">2013 · California &amp; Canada</span>
-              <span class="credit-note">Comedy Stage Production · Directed by Farzan Deljou · California performances included Wilshire Ebell Theatre, Los Angeles, and Foothill College, Los Altos</span>
-            </li>
+            <li><span class="credit-title">Hamlet</span><span class="credit-meta">1991</span><span class="credit-note">Professional Stage Debut · Directed by Ghotbeddin Sadeghi</span></li>
+            <li><span class="credit-title">The Seagull</span><span class="credit-meta">1996</span><span class="credit-note">Stage Production</span></li>
+            <li><span class="credit-title">Striptease</span><span class="credit-meta">2013 · California &amp; Canada</span><span class="credit-note">Comedy Stage Production · Directed by Farzan Deljou · California performances included Wilshire Ebell Theatre, Los Angeles, and Foothill College, Los Altos</span></li>
           </ul>
         </article>
 
         <article class="credit-group" id="film-credits">
           <h3>Film</h3>
           <ul class="credit-list">
-            <li>
-              <span class="credit-title">Remember the Flight</span>
-              <span class="credit-meta">1993</span>
-              <span class="credit-note">Feature Film · Directed by Hamid Rakhshani</span>
-            </li>
-            <li>
-              <span class="credit-title">Day of the Angel</span>
-              <span class="credit-meta">Rooz-e Fereshteh · 1994</span>
-              <span class="credit-note">Fereshteh / Angel · Feature Film · Directed by Behrouz Afkhami</span>
-            </li>
-            <li>
-              <span class="credit-title">The Visit</span>
-              <span class="credit-meta">Didar · 1995</span>
-              <span class="credit-note">Janet · Lead Role · Feature Film · Directed by Mohammad Reza Honarmand</span>
-            </li>
-            <li>
-              <span class="credit-title">The Eastern Woman</span>
-              <span class="credit-meta">1997</span>
-              <span class="credit-note">Feature Film · Directed by Rambod Lotfi</span>
-            </li>
-            <li>
-              <span class="credit-title">Die Hard</span>
-              <span class="credit-meta">Jan-Sakht · 1999</span>
-              <span class="credit-note">Feature Film · Directed by Ali Akbar Saghafi</span>
-            </li>
+            <li><span class="credit-title">Remember the Flight</span><span class="credit-meta">1993</span><span class="credit-note">Feature Film · Directed by Hamid Rakhshani</span></li>
+            <li><span class="credit-title">Day of the Angel</span><span class="credit-meta">Rooz-e Fereshteh · 1994</span><span class="credit-note">Fereshteh / Angel · Feature Film · Directed by Behrouz Afkhami</span></li>
+            <li><span class="credit-title">The Visit</span><span class="credit-meta">Didar · 1995</span><span class="credit-note">Janet · Lead Role · Feature Film · Directed by Mohammad Reza Honarmand</span></li>
+            <li><span class="credit-title">The Eastern Woman</span><span class="credit-meta">1997</span><span class="credit-note">Feature Film · Directed by Rambod Lotfi</span></li>
+            <li><span class="credit-title">Die Hard</span><span class="credit-meta">Jan-Sakht · 1999</span><span class="credit-note">Feature Film · Directed by Ali Akbar Saghafi</span></li>
           </ul>
         </article>
 
         <article class="credit-group" id="television-credits">
           <h3>Television</h3>
           <ul class="credit-list">
-            <li>
-              <span class="credit-title">Mr. Fabrizi's Business</span>
-              <span class="credit-meta">Kasb-o-Kar-e Aghaye Fabrizi · 1996</span>
-              <span class="credit-note">Televised Theatre · Directed by Mohammad Reza Khaki and Masoud Foroutan</span>
-            </li>
-            <li>
-              <span class="credit-title">Under the Bazaar</span>
-              <span class="credit-meta">1999</span>
-              <span class="credit-note">Television Miniseries · Directed by Reza Zhian</span>
-            </li>
-            <li>
-              <span class="credit-title">In the Lion's Skin</span>
-              <span class="credit-meta">2000</span>
-              <span class="credit-note">Televised Theatre · Directed by Shohreh Lorestani</span>
-            </li>
-            <li>
-              <span class="credit-title">Parimah</span>
-              <span class="credit-meta">2001</span>
-              <span class="credit-note">Television Film · Directed by Masoud Abparvar</span>
-            </li>
-            <li>
-              <span class="credit-title">Land of Dreams</span>
-              <span class="credit-meta">2002–2003</span>
-              <span class="credit-note">Television Series · Directed by Masoud Rashidi and Hamid Ghadakchian</span>
-            </li>
-            <li>
-              <span class="credit-title">Fellow Travelers</span>
-              <span class="credit-meta">2004–2005</span>
-              <span class="credit-note">Television Series · Directed by Ali Zhekan and Mohsen Mohseni-Nasab</span>
-            </li>
-            <li>
-              <span class="credit-title">Days of Protest</span>
-              <span class="credit-meta">2005</span>
-              <span class="credit-note">Television Series · Directed by Hossein Soheili-Zadeh</span>
-            </li>
-            <li>
-              <span class="credit-title">The Last Sin</span>
-              <span class="credit-meta">2006</span>
-              <span class="credit-note">Roya Akrami · Television Series · Directed by Hossein Soheili-Zadeh</span>
-            </li>
-            <li>
-              <span class="credit-title">Hasti</span>
-              <span class="credit-meta">2008</span>
-              <span class="credit-note">Lead Role · Television Film · Directed by Mahmoud Moazami · Produced by Mohsen Badrlou</span>
-            </li>
-            <li>
-              <span class="credit-title">Tell Me This Is Not a Dream</span>
-              <span class="credit-meta">2008</span>
-              <span class="credit-note">Television Film · Directed by Mehdi Golestaneh</span>
-            </li>
-            <li>
-              <span class="credit-title">Motherhood Song</span>
-              <span class="credit-meta">2008</span>
-              <span class="credit-note">Samira · Television Series · Directed by Hossein Soheili-Zadeh</span>
-            </li>
-            <li>
-              <span class="credit-title">Tavan</span>
-              <span class="credit-meta">2010</span>
-              <span class="credit-note">Marjan Amini · Television Series · Directed by Shahram Shah-Hosseini</span>
-            </li>
+            <li><span class="credit-title">Mr. Fabrizi's Business</span><span class="credit-meta">Kasb-o-Kar-e Aghaye Fabrizi · 1996</span><span class="credit-note">Televised Theatre · Directed by Mohammad Reza Khaki and Masoud Foroutan</span></li>
+            <li><span class="credit-title">Under the Bazaar</span><span class="credit-meta">1999</span><span class="credit-note">Television Miniseries · Directed by Reza Zhian</span></li>
+            <li><span class="credit-title">In the Lion's Skin</span><span class="credit-meta">2000</span><span class="credit-note">Televised Theatre · Directed by Shohreh Lorestani</span></li>
+            <li><span class="credit-title">Parimah</span><span class="credit-meta">2001</span><span class="credit-note">Television Film · Directed by Masoud Abparvar</span></li>
+            <li><span class="credit-title">Land of Dreams</span><span class="credit-meta">2002–2003</span><span class="credit-note">Television Series · Directed by Masoud Rashidi and Hamid Ghadakchian</span></li>
+            <li><span class="credit-title">Fellow Travelers</span><span class="credit-meta">2004–2005</span><span class="credit-note">Television Series · Directed by Ali Zhekan and Mohsen Mohseni-Nasab</span></li>
+            <li><span class="credit-title">Days of Protest</span><span class="credit-meta">2005</span><span class="credit-note">Television Series · Directed by Hossein Soheili-Zadeh</span></li>
+            <li><span class="credit-title">The Last Sin</span><span class="credit-meta">2006</span><span class="credit-note">Roya Akrami · Television Series · Directed by Hossein Soheili-Zadeh</span></li>
+            <li><span class="credit-title">Hasti</span><span class="credit-meta">2008</span><span class="credit-note">Lead Role · Television Film · Directed by Mahmoud Moazami · Produced by Mohsen Badrlou</span></li>
+            <li><span class="credit-title">Tell Me This Is Not a Dream</span><span class="credit-meta">2008</span><span class="credit-note">Television Film · Directed by Mehdi Golestaneh</span></li>
+            <li><span class="credit-title">Motherhood Song</span><span class="credit-meta">2008</span><span class="credit-note">Samira · Television Series · Directed by Hossein Soheili-Zadeh</span></li>
+            <li><span class="credit-title">Tavan</span><span class="credit-meta">2010</span><span class="credit-note">Marjan Amini · Television Series · Directed by Shahram Shah-Hosseini</span></li>
           </ul>
         </article>
       </div>
@@ -812,11 +361,7 @@
         <article class="credit-group">
           <h3>Screen &amp; Video</h3>
           <ul class="credit-list">
-            <li>
-              <span class="credit-title">Jonoon</span>
-              <span class="credit-meta">جنون</span>
-              <span class="credit-note">Anti-drug addiction music video and screen project · Directed by Masoud Abparvar · Screened in cinemas before feature films</span>
-            </li>
+            <li><span class="credit-title">Jonoon</span><span class="credit-meta">جنون</span><span class="credit-note">Anti-drug addiction music video and screen project · Directed by Masoud Abparvar · Screened in cinemas before feature films</span></li>
           </ul>
         </article>
       </div>
@@ -831,121 +376,22 @@
   </footer>
 
   <script>
-    const mobileLayout = window.matchMedia('(max-width: 51.25rem)').matches;
-    const mobileCreditTargets = document.querySelectorAll('.credits-header, .credit-group, .credits-note');
-
-    if (mobileLayout) {
-      mobileCreditTargets.forEach((target) => target.classList.add('mobile-credit-reveal'));
-    }
-
-    const revealTargets = document.querySelectorAll(
-      mobileLayout
-        ? '.reveal:not(.credits), .reveal-stagger:not(.credits-grid), .mobile-credit-reveal'
-        : '.reveal, .reveal-stagger'
-    );
-    const heroSection = document.querySelector('.hero');
-    const heroCopy = document.querySelector('.hero-copy');
-    const portraitWrap = document.querySelector('.portrait-wrap');
-    const motionLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+    const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
 
     if ('IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle('is-visible', entry.isIntersecting);
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
         });
-      }, mobileLayout
-        ? { threshold: 0.06, rootMargin: '0px 0px -8% 0px' }
-        : { threshold: 0.24, rootMargin: '-8% 0px -12% 0px' });
+      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
 
       revealTargets.forEach((target) => revealObserver.observe(target));
     } else {
       revealTargets.forEach((target) => target.classList.add('is-visible'));
     }
-
-    let activeScrollFrame = null;
-    let wheelTargetY = window.scrollY;
-
-    function easeInOutCubic(progress) {
-      return progress < .5
-        ? 4 * progress * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-    }
-
-    function animateScrollTo(destination, duration) {
-      const startY = window.scrollY;
-      const maxY = document.documentElement.scrollHeight - window.innerHeight;
-      const endY = Math.max(0, Math.min(destination, maxY));
-      const distance = endY - startY;
-      const startTime = performance.now();
-
-      if (activeScrollFrame) cancelAnimationFrame(activeScrollFrame);
-
-      function step(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-
-        if (progress < 1) {
-          activeScrollFrame = requestAnimationFrame(step);
-        } else {
-          activeScrollFrame = null;
-          wheelTargetY = window.scrollY;
-        }
-      }
-
-      activeScrollFrame = requestAnimationFrame(step);
-    }
-
-    function cinematicScrollTo(target) {
-      const endY = target.getBoundingClientRect().top + window.scrollY;
-      animateScrollTo(endY, 1800);
-    }
-
-    window.addEventListener('wheel', (event) => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || event.ctrlKey || event.metaKey) return;
-
-      event.preventDefault();
-      const maxY = document.documentElement.scrollHeight - window.innerHeight;
-      wheelTargetY = Math.max(0, Math.min(wheelTargetY + event.deltaY * .9, maxY));
-      animateScrollTo(wheelTargetY, 820);
-    }, { passive: false });
-
-    window.addEventListener('scroll', () => {
-      if (!activeScrollFrame) wheelTargetY = window.scrollY;
-    }, { passive: true });
-
-    motionLinks.forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (!target || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        event.preventDefault();
-        target.classList.remove('is-arrival');
-        void target.offsetWidth;
-        document.body.classList.add('is-navigating');
-
-        if (link.classList.contains('monogram')) {
-          setTimeout(() => {
-            window.location.href = window.location.pathname;
-          }, 520);
-          return;
-        }
-
-        setTimeout(() => {
-          cinematicScrollTo(target);
-          window.history.pushState(null, '', link.getAttribute('href'));
-        }, 320);
-
-        setTimeout(() => {
-          document.body.classList.remove('is-navigating');
-          target.classList.add('is-arrival', 'is-visible');
-        }, 1300);
-
-        setTimeout(() => {
-          target.classList.remove('is-arrival');
-        }, 3300);
-      });
-    });
   </script>
 </body>
 </html>
