@@ -76,17 +76,22 @@
     .credit-meta { display:block; margin-top:.2rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.72rem; letter-spacing:.08em; line-height:1.55; text-transform:uppercase; }
     .credits-note { max-width:46rem; margin:clamp(2.25rem,5vw,4rem) 0 0; color:var(--muted); font-size:clamp(1rem,1.2vw,1.125rem); line-height:1.7; }
 
-    .production-archive { padding:clamp(5.625rem,12vw,10rem) clamp(1.75rem,6vw,6rem); border-bottom:1px solid var(--line); scroll-margin-top:2rem; }
-    .production-header { max-width:49rem; margin-bottom:clamp(3rem,6vw,5rem); }
-    .production-header h2 { margin:0 0 1rem; font-size:clamp(2rem,3.6vw,3.25rem); font-weight:400; line-height:1.08; text-wrap:balance; }
-    .production-header p:last-child { margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.65; }
-    .production-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(2rem,3.2vw,3.75rem) clamp(1.25rem,2.5vw,2.5rem); }
-    .production-photo { margin:0; }
-    .production-photo:last-child { grid-column:2; }
-    .production-frame { padding:.5rem; background:#e0d3c7; border:1px solid rgb(38 31 27 / 20%); box-shadow:0 .4375rem 1.25rem rgb(38 31 27 / 10%); overflow:hidden; }
-    .production-frame img { width:100%; height:auto; aspect-ratio:3 / 2; display:block; object-fit:contain; background:var(--ivory); transition:transform .65s cubic-bezier(.2,.72,.2,1),filter .65s ease; }
-    .production-frame:hover img { transform:scale(1.012); filter:saturate(1.025); }
-    .production-photo figcaption { padding-top:.75rem; color:var(--muted); font-family:Arial,Helvetica,sans-serif; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; }
+    .photos-archive { padding:clamp(5.625rem,12vw,10rem) clamp(1.75rem,8vw,8.125rem); border-bottom:1px solid var(--line); scroll-margin-top:2rem; }
+    .photos-header { display:grid; grid-template-columns:.65fr 1.35fr; gap:clamp(2rem,8vw,8rem); max-width:76rem; margin:0 auto clamp(3rem,7vw,5.5rem); }
+    .photos-header h2 { margin:0 0 1rem; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:400; line-height:1; }
+    .photos-header p:last-child { max-width:42rem; margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.7; }
+    .production-card { position:relative; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(18rem,.88fr); max-width:62rem; min-height:24rem; margin:auto; border:1px solid rgb(113 63 69 / 42%); background:#e0d3c7; box-shadow:0 .75rem 2.25rem rgb(38 31 27 / 13%); text-decoration:none; overflow:hidden; transition:transform .45s ease,box-shadow .45s ease,border-color .45s ease; }
+    .production-card:hover { transform:translateY(-.35rem); border-color:var(--wine); box-shadow:0 1.1rem 2.8rem rgb(38 31 27 / 18%); }
+    .production-card::after { content:"Click to open gallery"; position:absolute; top:1rem; left:1rem; padding:.65rem .85rem; color:#fff; background:rgb(38 31 27 / 88%); font-family:Arial,Helvetica,sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; }
+    .production-cover { min-height:24rem; overflow:hidden; background:var(--ivory); }
+    .production-cover img { width:100%; height:100%; display:block; object-fit:contain; transition:transform .8s cubic-bezier(.2,.72,.2,1); }
+    .production-card:hover img { transform:scale(1.015); }
+    .production-summary { display:flex; flex-direction:column; justify-content:center; padding:clamp(2rem,5vw,4.5rem); }
+    .production-summary h3 { margin:1.35rem 0 .55rem; font-size:clamp(2rem,4vw,3.5rem); font-weight:400; line-height:1.04; }
+    .production-number,.production-meta { color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; }
+    .production-persian { display:block; margin-top:.65rem; color:var(--wine); font-size:.55em; }
+    .production-description { margin:1.25rem 0 2.2rem; color:var(--muted); font-size:1.05rem; line-height:1.65; }
+    .production-open { align-self:flex-start; padding:.9rem 1.15rem; color:#fff; background:var(--wine); border:1px solid var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; box-shadow:0 .35rem .9rem rgb(38 31 27 / 12%); }
 
     .reveal,.reveal-stagger > * { opacity:.94; transform:translateY(.6rem); transition:opacity .38s ease,transform .38s ease; }
     .reveal.is-visible,.reveal-stagger.is-visible > * { opacity:1; transform:translateY(0); }
@@ -107,15 +112,16 @@
       .portrait-wrap { min-height:auto; aspect-ratio:4 / 5; }
       .journey { grid-template-columns:1fr; gap:1.875rem; padding-block:4.5rem; }
       .disciplines,.credits-grid { grid-template-columns:1fr; }
-      .production-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .production-photo:last-child { grid-column:auto; }
+      .photos-header { grid-template-columns:1fr; gap:1.5rem; }
+      .production-card { grid-template-columns:1fr; }
+      .production-cover { min-height:auto; aspect-ratio:3 / 2; }
       .discipline,.discipline a { min-height:10.625rem; }
       .discipline + .discipline { border-top:1px solid var(--line); border-left:0; }
       .discipline h3 { margin-top:1.75rem; }
       footer { flex-direction:column; }
     }
     @media (max-width:35rem) { .site-header { flex-direction:column; gap:1.25rem; } .site-nav { justify-content:flex-start; } }
-    @media (max-width:37.5rem) { .production-gallery { grid-template-columns:1fr; } }
+    @media (max-width:37.5rem) { .production-summary { padding:2.25rem; } .production-card::after { top:.75rem; left:.75rem; } }
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
       *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
@@ -129,7 +135,7 @@
   <header class="site-header">
     <a class="monogram" href="#home" aria-label="Mina Lakani home">ML</a>
     <nav class="site-nav" aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#journey">Biography</a><a href="#credits">Credits</a><a href="#day-of-the-angel">Photos</a><a href="#work">Archive</a>
+      <a href="#home">Home</a><a href="#journey">Biography</a><a href="#credits">Credits</a><a href="#photos">Photos</a><a href="#work">Archive</a>
     </nav>
   </header>
 
@@ -168,7 +174,7 @@
         </ul></article>
         <article class="credit-group" id="film-credits"><h3>Film</h3><ul class="credit-list">
           <li><span class="credit-title">Remember the Flight</span><span class="credit-meta">1993</span><span class="credit-note">Feature Film · Directed by Hamid Rakhshani</span></li>
-          <li><a href="#day-of-the-angel" class="credit-title">Day of the Angel</a><span class="credit-meta">Rooz-e Fereshteh · 1994</span><span class="credit-note">Fereshteh / Angel · Feature Film · Directed by Behrouz Afkhami</span></li>
+          <li><a href="day-of-the-angel.html" class="credit-title">Day of the Angel</a><span class="credit-meta">Rooz-e Fereshteh · 1994</span><span class="credit-note">Fereshteh / Angel · Feature Film · Directed by Behrouz Afkhami</span></li>
           <li><span class="credit-title">The Visit</span><span class="credit-meta">Didar · 1995</span><span class="credit-note">Janet · Lead Role · Feature Film · Directed by Mohammad Reza Honarmand</span></li>
           <li><span class="credit-title">The Eastern Woman</span><span class="credit-meta">1997</span><span class="credit-note">Feature Film · Directed by Rambod Lotfi</span></li>
           <li><span class="credit-title">Die Hard</span><span class="credit-meta">Jan-Sakht · 1999</span><span class="credit-note">Feature Film · Directed by Ali Akbar Saghafi</span></li>
@@ -192,23 +198,12 @@
       <p class="credits-note">This credits record is based on confirmed acting work and can be expanded as additional documentation is reviewed.</p>
     </section>
 
-    <section class="production-archive reveal" id="day-of-the-angel" aria-labelledby="day-of-the-angel-heading">
-      <div class="production-header"><p class="section-label">Production Archive</p><h2 id="day-of-the-angel-heading">Day of the Angel <span lang="fa" dir="rtl">روز فرشته</span></h2><p>Selected production photographs from the 1994 feature film, preserving moments from Mina Lakani’s performance as Fereshteh.</p></div>
-      <div class="production-gallery reveal-stagger">
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-01.svg" alt="Mina Lakani in Day of the Angel, production photograph 1" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>01</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-02.svg" alt="Mina Lakani in Day of the Angel, production photograph 2" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>02</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-03.svg" alt="Mina Lakani in Day of the Angel, production photograph 3" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>03</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-04.svg" alt="Mina Lakani in Day of the Angel, production photograph 4" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>04</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-05.svg" alt="Mina Lakani in Day of the Angel, production photograph 5" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>05</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-06.svg" alt="Mina Lakani in Day of the Angel, production photograph 6" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>06</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-07.svg" alt="Mina Lakani in Day of the Angel, production photograph 7" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>07</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-08.svg" alt="Mina Lakani in Day of the Angel, production photograph 8" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>08</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-09.svg" alt="Mina Lakani in Day of the Angel, production photograph 9" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>09</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-10.svg" alt="Mina Lakani in Day of the Angel, production photograph 10" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>10</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-11.svg" alt="Mina Lakani in Day of the Angel, production photograph 11" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>11</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-12.svg" alt="Mina Lakani in Day of the Angel, production photograph 12" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>12</figcaption></figure>
-        <figure class="production-photo"><div class="production-frame"><img src="assets/day-of-the-angel/day-of-the-angel-13.svg" alt="Mina Lakani in Day of the Angel, production photograph 13" width="1800" height="1200" loading="lazy" decoding="async"></div><figcaption>13</figcaption></figure>
-      </div>
+    <section class="photos-archive reveal" id="photos" aria-labelledby="photos-heading">
+      <div class="photos-header"><p class="section-label">Production Photography</p><div><h2 id="photos-heading">Photos</h2><p>Selected photographic archives from Mina Lakani’s work across film, television, and theatre. Each production opens into its own collection.</p></div></div>
+      <a class="production-card" href="day-of-the-angel.html" aria-label="Open the Day of the Angel gallery with 13 photographs">
+        <div class="production-cover"><img src="assets/day-of-the-angel/day-of-the-angel-01.svg" alt="Mina Lakani as Fereshteh in Day of the Angel" width="1800" height="1200" loading="lazy" decoding="async"></div>
+        <div class="production-summary"><span class="production-number">01 · Film Gallery</span><h3>Day of the Angel <span class="production-persian" lang="fa" dir="rtl">روز فرشته</span></h3><span class="production-meta">1994 · 13 Production Photographs</span><p class="production-description">A photographic archive preserving moments from Mina Lakani’s performance as Fereshteh.</p><span class="production-open">Open 13-photo gallery →</span></div>
+      </a>
     </section>
   </main>
 
