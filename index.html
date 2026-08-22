@@ -16,25 +16,16 @@
     a:focus-visible { outline:3px solid var(--wine); outline-offset:5px; }
     .skip-link { position:fixed; z-index:10; top:1rem; left:1rem; padding:.75rem 1rem; color:#fff; background:var(--ink); transform:translateY(-200%); }
     .skip-link:focus { transform:translateY(0); }
-
     .site-header { position:absolute; z-index:3; inset:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; padding:1.625rem var(--page-padding); animation:header-arrival 1.05s .18s ease-out both; }
     .monogram { display:grid; width:2.75rem; aspect-ratio:1; place-items:center; border:1px solid rgb(38 31 27 / 32%); border-radius:50%; font-family:Didot,"Bodoni MT",Georgia,serif; font-size:.95rem; letter-spacing:.08em; text-decoration:none; }
     .site-nav { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:clamp(1.125rem,3vw,2.375rem); }
     .site-nav a { font-family:Arial,Helvetica,sans-serif; font-size:.75rem; letter-spacing:.13em; text-decoration:none; text-transform:uppercase; transition:color .25s ease,transform .25s ease; }
     .site-nav a:hover { color:var(--wine); transform:translateY(-.12rem); }
-
     .hero { position:relative; isolation:isolate; min-height:100svh; display:grid; grid-template-columns:minmax(0,1fr) minmax(22.5rem,.84fr); overflow:hidden; background:linear-gradient(90deg,rgb(242 235 226 / 96%),rgb(222 208 194 / 82%)),radial-gradient(circle at 18% 20%,rgb(255 255 255 / 62%),transparent 35%),var(--sand); scroll-margin-top:0; }
     .hero::after { content:""; position:absolute; z-index:2; inset:0; pointer-events:none; background:linear-gradient(100deg,rgb(242 235 226 / 46%) 0%,rgb(222 208 194 / 22%) 48%,transparent 78%); transform:translateX(0); opacity:1; animation:cinematic-wash 1.95s .08s cubic-bezier(.2,.72,.2,1) both; }
     .hero-copy { position:relative; z-index:1; display:flex; flex-direction:column; justify-content:center; padding:8.125rem clamp(2.125rem,7vw,7rem) 5rem; }
     .hero-copy > * { opacity:0; transform:translateY(1.35rem); animation:reveal-sequence 1.15s cubic-bezier(.2,.72,.2,1) both; }
-    .hero-copy > *:nth-child(1) { animation-delay:.24s; }
-    .hero-copy > *:nth-child(2) { animation-delay:.43s; }
-    .hero-copy > *:nth-child(3) { animation-delay:.61s; }
-    .hero-copy > *:nth-child(4) { animation-delay:.79s; }
-    .hero-copy > *:nth-child(5) { animation-delay:.97s; }
-    .hero-copy > *:nth-child(6) { animation-delay:1.15s; }
-    .hero-copy > *:nth-child(7) { animation-delay:1.33s; }
-
+    .hero-copy > *:nth-child(1) { animation-delay:.24s; } .hero-copy > *:nth-child(2) { animation-delay:.43s; } .hero-copy > *:nth-child(3) { animation-delay:.61s; } .hero-copy > *:nth-child(4) { animation-delay:.79s; } .hero-copy > *:nth-child(5) { animation-delay:.97s; } .hero-copy > *:nth-child(6) { animation-delay:1.15s; } .hero-copy > *:nth-child(7) { animation-delay:1.33s; }
     .eyebrow,.section-label,.disciplines-line,.hero-official { color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-weight:600; text-transform:uppercase; }
     .eyebrow { margin:0 0 1.5rem; font-size:.75rem; letter-spacing:.24em; }
     h1 { margin:0; font-family:Didot,"Bodoni MT","Baskerville",Georgia,serif; font-size:clamp(3.25rem,7vw,6.25rem); font-weight:400; letter-spacing:-.035em; line-height:.94; text-wrap:balance; }
@@ -44,194 +35,46 @@
     .hero-tagline { max-width:36rem; margin:0 0 2.25rem; color:var(--muted); font-size:clamp(1.1rem,1.8vw,1.45rem); line-height:1.55; text-wrap:pretty; }
     .hero-actions { display:flex; flex-wrap:wrap; gap:1.25rem 2rem; align-items:center; }
     .explore { align-self:flex-start; padding:.8125rem 0 .625rem; border-bottom:1px solid var(--ink); font-family:Arial,Helvetica,sans-serif; font-size:.75rem; letter-spacing:.16em; text-decoration:none; text-transform:uppercase; transition:color .25s ease,border-color .25s ease,transform .25s ease; }
-    .explore:hover { color:var(--wine); border-bottom-color:var(--wine); transform:translateY(-.12rem); }
-    .explore.secondary { color:var(--wine); border-bottom-color:var(--wine); }
-
+    .explore:hover { color:var(--wine); border-bottom-color:var(--wine); transform:translateY(-.12rem); } .explore.secondary { color:var(--wine); border-bottom-color:var(--wine); }
     .portrait-wrap { position:relative; z-index:1; min-height:100svh; overflow:hidden; background:#b7a497; }
     .portrait-wrap img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 22%; opacity:.18; filter:saturate(.78) brightness(.86); transform:scale(1.045); transition:opacity 1.8s cubic-bezier(.2,.72,.2,1),filter 1.8s cubic-bezier(.2,.72,.2,1),transform 2.1s cubic-bezier(.2,.72,.2,1); }
     .portrait-wrap.is-loaded img { opacity:1; filter:none; transform:scale(1); }
-
     .journey { display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(3.125rem,9vw,9.375rem); padding:clamp(5.625rem,12vw,10.625rem) clamp(1.75rem,8vw,8.125rem); scroll-margin-top:2rem; }
     .section-label { margin:.375rem 0; font-size:.6875rem; letter-spacing:.22em; }
     .journey h2 { max-width:47.5rem; margin:0 0 2.125rem; font-size:clamp(2rem,3.6vw,3.25rem); font-weight:400; line-height:1.08; text-wrap:balance; }
     .journey p { max-width:45rem; margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.7; text-wrap:pretty; }
     .disciplines { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); scroll-margin-top:2rem; }
-    .discipline { min-height:15rem; }
-    .discipline a { display:flex; min-height:15rem; flex-direction:column; justify-content:center; padding:3.4375rem clamp(1.75rem,5vw,4.375rem); text-decoration:none; transition:background-color .3s ease,color .3s ease,transform .3s ease,box-shadow .3s ease; }
+    .discipline { min-height:15rem; } .discipline a { display:flex; min-height:15rem; flex-direction:column; justify-content:center; padding:3.4375rem clamp(1.75rem,5vw,4.375rem); text-decoration:none; transition:background-color .3s ease,color .3s ease,transform .3s ease,box-shadow .3s ease; }
     .discipline a:hover { background:rgb(255 255 255 / 38%); box-shadow:inset 0 0 0 1px rgb(113 63 69 / 18%); color:var(--wine); transform:translateY(-.3rem); }
-    .discipline + .discipline { border-left:1px solid var(--line); }
-    .discipline span { color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.6875rem; letter-spacing:.18em; }
-    .discipline h3 { margin:3.4375rem 0 0; font-size:clamp(1.75rem,3vw,2.625rem); font-weight:400; }
-
+    .discipline + .discipline { border-left:1px solid var(--line); } .discipline span { color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.6875rem; letter-spacing:.18em; } .discipline h3 { margin:3.4375rem 0 0; font-size:clamp(1.75rem,3vw,2.625rem); font-weight:400; }
     .credits { padding:clamp(5.625rem,12vw,10rem) clamp(1.75rem,8vw,8.125rem); border-bottom:1px solid var(--line); scroll-margin-top:2rem; }
-    .credits-header { max-width:44rem; margin-bottom:clamp(3rem,6vw,5rem); }
-    .credits h2 { margin:0 0 1rem; font-size:clamp(2rem,3.6vw,3.25rem); font-weight:400; line-height:1.08; text-wrap:balance; }
-    .credits-header p { margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.65; }
-    .credits-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,4.5rem); }
-    .credit-group { border-top:1px solid var(--line); padding-top:1.5rem; }
-    .credit-group h3 { margin:0 0 1.5rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.75rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
-    .credit-list { display:grid; gap:1.25rem; margin:0; padding:0; list-style:none; }
-    .credit-title { display:block; font-size:clamp(1.25rem,2vw,1.75rem); line-height:1.2; }
-    .credit-note { display:block; margin-top:.35rem; color:var(--muted); font-family:Arial,Helvetica,sans-serif; font-size:.85rem; line-height:1.55; }
-    .credit-meta { display:block; margin-top:.2rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.72rem; letter-spacing:.08em; line-height:1.55; text-transform:uppercase; }
-    .credits-note { max-width:46rem; margin:clamp(2.25rem,5vw,4rem) 0 0; color:var(--muted); font-size:clamp(1rem,1.2vw,1.125rem); line-height:1.7; }
-
+    .credits-header { max-width:44rem; margin-bottom:clamp(3rem,6vw,5rem); } .credits h2 { margin:0 0 1rem; font-size:clamp(2rem,3.6vw,3.25rem); font-weight:400; line-height:1.08; text-wrap:balance; } .credits-header p { margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.65; }
+    .credits-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,4.5rem); } .credit-group { border-top:1px solid var(--line); padding-top:1.5rem; } .credit-group h3 { margin:0 0 1.5rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.75rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; }
+    .credit-list { display:grid; gap:1.25rem; margin:0; padding:0; list-style:none; } .credit-title { display:block; font-size:clamp(1.25rem,2vw,1.75rem); line-height:1.2; } .credit-note { display:block; margin-top:.35rem; color:var(--muted); font-family:Arial,Helvetica,sans-serif; font-size:.85rem; line-height:1.55; } .credit-meta { display:block; margin-top:.2rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.72rem; letter-spacing:.08em; line-height:1.55; text-transform:uppercase; } .credits-note { max-width:46rem; margin:clamp(2.25rem,5vw,4rem) 0 0; color:var(--muted); font-size:clamp(1rem,1.2vw,1.125rem); line-height:1.7; }
     .photos-archive { padding:clamp(5.625rem,12vw,10rem) clamp(1.75rem,8vw,8.125rem); border-bottom:1px solid var(--line); scroll-margin-top:2rem; }
-    .photos-header { display:grid; grid-template-columns:.65fr 1.35fr; gap:clamp(2rem,8vw,8rem); max-width:76rem; margin:0 auto clamp(3rem,7vw,5.5rem); }
-    .photos-header h2 { margin:0 0 1rem; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:400; line-height:1; }
-    .photos-header p:last-child { max-width:42rem; margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.7; }
-    .archive-context { max-width:62rem; margin:0 auto clamp(3rem,6vw,4.5rem); padding:clamp(1.5rem,3vw,2.25rem) clamp(1.5rem,4vw,3rem); background:#e6d8cc; border:1px solid rgb(113 63 69 / 35%); border-left:.4rem solid var(--wine); box-shadow:0 .55rem 1.5rem rgb(38 31 27 / 9%); }
-    .archive-context h3 { margin:0 0 1.25rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:clamp(.82rem,1.2vw,1rem); letter-spacing:.14em; line-height:1.5; text-transform:uppercase; }
-    .archive-context p { margin:0; color:var(--ink); font-size:clamp(1.02rem,1.25vw,1.16rem); line-height:1.7; }
-    .archive-context .context-fa { margin-top:1.15rem; padding-top:1.15rem; border-top:1px solid rgb(113 63 69 / 24%); font-size:clamp(1.08rem,1.35vw,1.23rem); line-height:1.9; }
-    .production-card { position:relative; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(18rem,.88fr); max-width:62rem; min-height:24rem; margin:auto; border:1px solid rgb(113 63 69 / 42%); background:#e0d3c7; box-shadow:0 .75rem 2.25rem rgb(38 31 27 / 13%); text-decoration:none; overflow:hidden; transition:transform .45s ease,box-shadow .45s ease,border-color .45s ease; }
-    .production-card:hover { transform:translateY(-.35rem); border-color:var(--wine); box-shadow:0 1.1rem 2.8rem rgb(38 31 27 / 18%); }
-    .production-card::after { content:"Click to open gallery"; position:absolute; top:1rem; left:1rem; padding:.65rem .85rem; color:#fff; background:rgb(38 31 27 / 88%); font-family:Arial,Helvetica,sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; }
-    .production-cover { min-height:24rem; overflow:hidden; background:var(--ivory); }
-    .production-cover img { width:100%; height:100%; display:block; object-fit:contain; transition:transform .8s cubic-bezier(.2,.72,.2,1); }
-    .production-card:hover img { transform:scale(1.015); }
-    .production-summary { display:flex; flex-direction:column; justify-content:center; padding:clamp(2rem,5vw,4.5rem); }
-    .production-summary h3 { margin:1.35rem 0 .55rem; font-size:clamp(2rem,4vw,3.5rem); font-weight:400; line-height:1.04; }
-    .production-number,.production-meta { color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; }
-    .production-persian { display:block; margin-top:.65rem; color:var(--wine); font-size:.55em; }
-    .production-description { margin:1.25rem 0 2.2rem; color:var(--muted); font-size:1.05rem; line-height:1.65; }
-    .production-open { align-self:flex-start; padding:.9rem 1.15rem; color:#fff; background:var(--wine); border:1px solid var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; box-shadow:0 .35rem .9rem rgb(38 31 27 / 12%); }
-
-    .reveal,.reveal-stagger > * { opacity:.94; transform:translateY(.6rem); transition:opacity .38s ease,transform .38s ease; }
-    .reveal.is-visible,.reveal-stagger.is-visible > * { opacity:1; transform:translateY(0); }
-    .reveal-stagger.is-visible > *:nth-child(2) { transition-delay:.05s; }
-    .reveal-stagger.is-visible > *:nth-child(3) { transition-delay:.1s; }
-
+    .photos-header { display:grid; grid-template-columns:.65fr 1.35fr; gap:clamp(2rem,8vw,8rem); max-width:76rem; margin:0 auto clamp(3rem,7vw,5.5rem); } .photos-header h2 { margin:0 0 1rem; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:400; line-height:1; } .photos-header p:last-child { max-width:42rem; margin:0; color:var(--muted); font-size:clamp(1.0625rem,1.35vw,1.25rem); line-height:1.7; }
+    .archive-context { max-width:62rem; margin:0 auto clamp(3rem,6vw,4.5rem); padding:clamp(1.5rem,3vw,2.25rem) clamp(1.5rem,4vw,3rem); background:#e6d8cc; border:1px solid rgb(113 63 69 / 35%); border-left:.4rem solid var(--wine); box-shadow:0 .55rem 1.5rem rgb(38 31 27 / 9%); } .archive-context h3 { margin:0 0 1.25rem; color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:clamp(.82rem,1.2vw,1rem); letter-spacing:.14em; line-height:1.5; text-transform:uppercase; } .archive-context p { margin:0; color:var(--ink); font-size:clamp(1.02rem,1.25vw,1.16rem); line-height:1.7; } .archive-context .context-fa { margin-top:1.15rem; padding-top:1.15rem; border-top:1px solid rgb(113 63 69 / 24%); font-size:clamp(1.08rem,1.35vw,1.23rem); line-height:1.9; }
+    .production-card { position:relative; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(18rem,.88fr); max-width:62rem; min-height:24rem; margin:auto; border:1px solid rgb(113 63 69 / 42%); background:#e0d3c7; box-shadow:0 .75rem 2.25rem rgb(38 31 27 / 13%); text-decoration:none; overflow:hidden; transition:transform .45s ease,box-shadow .45s ease,border-color .45s ease; } .production-card:hover { transform:translateY(-.35rem); border-color:var(--wine); box-shadow:0 1.1rem 2.8rem rgb(38 31 27 / 18%); } .production-card::after { content:"Click to open gallery"; position:absolute; top:1rem; left:1rem; padding:.65rem .85rem; color:#fff; background:rgb(38 31 27 / 88%); font-family:Arial,Helvetica,sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; }
+    .production-cover { min-height:24rem; overflow:hidden; background:var(--ivory); } .production-cover img { width:100%; height:100%; display:block; object-fit:contain; transition:transform .8s cubic-bezier(.2,.72,.2,1); } .production-card:hover img { transform:scale(1.015); } .production-summary { display:flex; flex-direction:column; justify-content:center; padding:clamp(2rem,5vw,4.5rem); } .production-summary h3 { margin:1.35rem 0 .55rem; font-size:clamp(2rem,4vw,3.5rem); font-weight:400; line-height:1.04; } .production-number,.production-meta { color:var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; } .production-persian { display:block; margin-top:.65rem; color:var(--wine); font-size:.55em; } .production-description { margin:1.25rem 0 2.2rem; color:var(--muted); font-size:1.05rem; line-height:1.65; } .production-open { align-self:flex-start; padding:.9rem 1.15rem; color:#fff; background:var(--wine); border:1px solid var(--wine); font-family:Arial,Helvetica,sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; box-shadow:0 .35rem .9rem rgb(38 31 27 / 12%); }
+    .reveal,.reveal-stagger > * { opacity:.94; transform:translateY(.6rem); transition:opacity .38s ease,transform .38s ease; } .reveal.is-visible,.reveal-stagger.is-visible > * { opacity:1; transform:translateY(0); } .reveal-stagger.is-visible > *:nth-child(2) { transition-delay:.05s; } .reveal-stagger.is-visible > *:nth-child(3) { transition-delay:.1s; }
     footer { display:flex; justify-content:space-between; gap:1.5625rem; padding:2.375rem var(--page-padding); color:var(--muted); font-family:Arial,Helvetica,sans-serif; font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase; }
-
-    @keyframes header-arrival { from { opacity:0; transform:translateY(-.6rem); } to { opacity:1; transform:none; } }
-    @keyframes reveal-sequence { from { opacity:0; transform:translateY(1.35rem); } to { opacity:1; transform:translateY(0); } }
-    @keyframes cinematic-wash { 0% { opacity:1; transform:translateX(0); } 60% { opacity:.45; } 100% { opacity:0; transform:translateX(18%); } }
-
-    @media (max-width:51.25rem) {
-      .site-header { position:relative; align-items:flex-start; background:var(--sand); }
-      .site-nav { max-width:17rem; row-gap:.8rem; }
-      .hero { min-height:auto; grid-template-columns:1fr; }
-      .hero-copy { padding:4.375rem 1.75rem 3.75rem; }
-      .portrait-wrap { min-height:auto; aspect-ratio:4 / 5; }
-      .journey { grid-template-columns:1fr; gap:1.875rem; padding-block:4.5rem; }
-      .disciplines,.credits-grid { grid-template-columns:1fr; }
-      .photos-header { grid-template-columns:1fr; gap:1.5rem; }
-      .production-card { grid-template-columns:1fr; }
-      .production-cover { min-height:auto; aspect-ratio:3 / 2; }
-      .discipline,.discipline a { min-height:10.625rem; }
-      .discipline + .discipline { border-top:1px solid var(--line); border-left:0; }
-      .discipline h3 { margin-top:1.75rem; }
-      footer { flex-direction:column; }
-    }
-    @media (max-width:35rem) { .site-header { flex-direction:column; gap:1.25rem; } .site-nav { justify-content:flex-start; } }
-    @media (max-width:37.5rem) { .production-summary { padding:2.25rem; } .production-card::after { top:.75rem; left:.75rem; } }
-    @media (prefers-reduced-motion:reduce) {
-      html { scroll-behavior:auto; }
-      *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-      .hero-copy > *,.portrait-wrap,.portrait-wrap img,.reveal,.reveal-stagger > * { opacity:1; transform:none; filter:none; }
-      .hero::after { display:none; }
-    }
+    @keyframes header-arrival { from { opacity:0; transform:translateY(-.6rem); } to { opacity:1; transform:none; } } @keyframes reveal-sequence { from { opacity:0; transform:translateY(1.35rem); } to { opacity:1; transform:translateY(0); } } @keyframes cinematic-wash { 0% { opacity:1; transform:translateX(0); } 60% { opacity:.45; } 100% { opacity:0; transform:translateX(18%); } }
+    @media (max-width:51.25rem) { .site-header { position:relative; align-items:flex-start; background:var(--sand); } .site-nav { max-width:17rem; row-gap:.8rem; } .hero { min-height:auto; grid-template-columns:1fr; } .hero-copy { padding:4.375rem 1.75rem 3.75rem; } .portrait-wrap { min-height:auto; aspect-ratio:4 / 5; } .journey { grid-template-columns:1fr; gap:1.875rem; padding-block:4.5rem; } .disciplines,.credits-grid { grid-template-columns:1fr; } .photos-header { grid-template-columns:1fr; gap:1.5rem; } .production-card { grid-template-columns:1fr; } .production-cover { min-height:auto; aspect-ratio:3 / 2; } .discipline,.discipline a { min-height:10.625rem; } .discipline + .discipline { border-top:1px solid var(--line); border-left:0; } .discipline h3 { margin-top:1.75rem; } footer { flex-direction:column; } }
+    @media (max-width:35rem) { .site-header { flex-direction:column; gap:1.25rem; } .site-nav { justify-content:flex-start; } } @media (max-width:37.5rem) { .production-summary { padding:2.25rem; } .production-card::after { top:.75rem; left:.75rem; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .hero-copy > *,.portrait-wrap,.portrait-wrap img,.reveal,.reveal-stagger > * { opacity:1; transform:none; filter:none; } .hero::after { display:none; } }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="site-header">
-    <a class="monogram" href="#home" aria-label="Mina Lakani home">ML</a>
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#journey">Biography</a><a href="#credits">Credits</a><a href="#photos">Photos</a><a href="career-archive.html">Archive</a>
-    </nav>
-  </header>
-
+  <header class="site-header"><a class="monogram" href="#home" aria-label="Mina Lakani home">ML</a><nav class="site-nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#journey">Biography</a><a href="#credits">Credits</a><a href="#photos">Photos</a><a href="career-archive.html">Archive</a></nav></header>
   <main id="main-content">
-    <section class="hero" id="home" aria-labelledby="page-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Iranian Actress</p>
-        <h1 id="page-title">Mina Lakani</h1>
-        <p class="hero-official">Official Actress Website</p>
-        <p class="identity-tagline">An Artistic Journey Through Stage and Screen</p>
-        <p class="disciplines-line">Theatre · Film · Television</p>
-        <p class="hero-tagline">A cinematic record of a professional acting career shaped by theatre, film, television, and artistic perseverance.</p>
-        <div class="hero-actions"><a class="explore" href="#journey">Discover her journey</a><a class="explore secondary" href="#credits">View credits</a></div>
-      </div>
-      <div class="portrait-wrap"><img src="mina-lakani.png" alt="Portrait of actress Mina Lakani" width="1023" height="1537" decoding="async" fetchpriority="high"></div>
-    </section>
-
-    <section class="journey reveal" id="journey" aria-labelledby="journey-heading">
-      <p class="section-label">The Journey</p>
-      <div><h2 id="journey-heading">Acting found her through a moment of destiny.</h2><p>Mina Lakani entered the world of theatre on her eighteenth birthday, at the beginning of her nineteenth year, when an unexpected invitation led her to rehearsals for Shakespeare’s <em>Hamlet</em>. That first encounter began a professional career spanning stage, cinema, and television.</p></div>
-    </section>
-
-    <section class="disciplines reveal-stagger" id="work" aria-label="Career disciplines">
-      <article class="discipline"><a href="#theatre-credits"><span aria-hidden="true">01</span><h3>Theatre</h3></a></article>
-      <article class="discipline"><a href="#film-credits"><span aria-hidden="true">02</span><h3>Film</h3></a></article>
-      <article class="discipline"><a href="#television-credits"><span aria-hidden="true">03</span><h3>Television</h3></a></article>
-    </section>
-
-    <section class="credits reveal" id="credits" aria-labelledby="credits-heading">
-      <div class="credits-header"><p class="section-label">Credits</p><h2 id="credits-heading">Acting work across theatre, film, television, and screen projects.</h2><p>A concise record of confirmed stage and screen credits from Mina Lakani's professional career.</p></div>
-      <div class="credits-grid reveal-stagger">
-        <article class="credit-group" id="theatre-credits"><h3>Theatre</h3><ul class="credit-list">
-          <li><span class="credit-title">Hamlet</span><span class="credit-meta">1991</span><span class="credit-note">Professional Stage Debut · Directed by Ghotbeddin Sadeghi</span></li>
-          <li><span class="credit-title">The Seagull</span><span class="credit-meta">1996</span><span class="credit-note">Stage Production</span></li>
-          <li><span class="credit-title">Striptease</span><span class="credit-meta">2013 · California &amp; Canada</span><span class="credit-note">Comedy Stage Production · Directed by Farzan Deljou · California performances included Wilshire Ebell Theatre, Los Angeles, and Foothill College, Los Altos</span></li>
-        </ul></article>
-        <article class="credit-group" id="film-credits"><h3>Film</h3><ul class="credit-list">
-          <li><span class="credit-title">Remember the Flight</span><span class="credit-meta">1993</span><span class="credit-note">Feature Film · Directed by Hamid Rakhshani</span></li>
-          <li><a href="day-of-the-angel.html" class="credit-title">Day of the Angel</a><span class="credit-meta">Rooz-e Fereshteh · 1994</span><span class="credit-note">Fereshteh / Angel · Feature Film · Directed by Behrouz Afkhami</span></li>
-          <li><span class="credit-title">The Visit</span><span class="credit-meta">Didar · 1995</span><span class="credit-note">Janet · Lead Role · Feature Film · Directed by Mohammad Reza Honarmand</span></li>
-          <li><span class="credit-title">The Eastern Woman</span><span class="credit-meta">1997</span><span class="credit-note">Feature Film · Directed by Rambod Lotfi</span></li>
-          <li><span class="credit-title">Die Hard</span><span class="credit-meta">Jan-Sakht · 1999</span><span class="credit-note">Feature Film · Directed by Ali Akbar Saghafi</span></li>
-        </ul></article>
-        <article class="credit-group" id="television-credits"><h3>Television</h3><ul class="credit-list">
-          <li><span class="credit-title">Mr. Fabrizi's Business</span><span class="credit-meta">Kasb-o-Kar-e Aghaye Fabrizi · 1996</span><span class="credit-note">Televised Theatre · Directed by Mohammad Reza Khaki and Masoud Foroutan</span></li>
-          <li><span class="credit-title">Under the Bazaar</span><span class="credit-meta">1999</span><span class="credit-note">Television Miniseries · Directed by Reza Zhian</span></li>
-          <li><span class="credit-title">In the Lion's Skin</span><span class="credit-meta">2000</span><span class="credit-note">Televised Theatre · Directed by Shohreh Lorestani</span></li>
-          <li><span class="credit-title">Parimah</span><span class="credit-meta">2001</span><span class="credit-note">Television Film · Directed by Masoud Abparvar</span></li>
-          <li><span class="credit-title">Land of Dreams</span><span class="credit-meta">2002–2003</span><span class="credit-note">Television Series · Directed by Masoud Rashidi and Hamid Ghadakchian</span></li>
-          <li><span class="credit-title">Fellow Travelers</span><span class="credit-meta">2004–2005</span><span class="credit-note">Television Series · Directed by Ali Zhekan and Mohsen Mohseni-Nasab</span></li>
-          <li><span class="credit-title">Days of Protest</span><span class="credit-meta">2005</span><span class="credit-note">Television Series · Directed by Hossein Soheili-Zadeh</span></li>
-          <li><span class="credit-title">The Last Sin</span><span class="credit-meta">2006</span><span class="credit-note">Roya Akrami · Television Series · Directed by Hossein Soheili-Zadeh</span></li>
-          <li><span class="credit-title">Hasti</span><span class="credit-meta">2008</span><span class="credit-note">Lead Role · Television Film · Directed by Mahmoud Moazami · Produced by Mohsen Badrlou</span></li>
-          <li><span class="credit-title">Tell Me This Is Not a Dream</span><span class="credit-meta">2008</span><span class="credit-note">Television Film · Directed by Mehdi Golestaneh</span></li>
-          <li><span class="credit-title">Motherhood Song</span><span class="credit-meta">2008</span><span class="credit-note">Samira · Television Series · Directed by Hossein Soheili-Zadeh</span></li>
-          <li><span class="credit-title">Tavan</span><span class="credit-meta">2010</span><span class="credit-note">Marjan Amini · Television Series · Directed by Shahram Shah-Hosseini</span></li>
-        </ul></article>
-      </div>
-      <div class="credits-grid reveal-stagger" style="margin-top:clamp(2.5rem,5vw,4.5rem);"><article class="credit-group"><h3>Screen &amp; Video</h3><ul class="credit-list"><li><span class="credit-title">Jonoon</span><span class="credit-meta">جنون</span><span class="credit-note">Anti-drug addiction music video and screen project · Directed by Masoud Abparvar · Screened in cinemas before feature films</span></li></ul></article></div>
-      <p class="credits-note">This credits record is based on confirmed acting work and can be expanded as additional documentation is reviewed.</p>
-    </section>
-
-    <section class="photos-archive reveal" id="photos" aria-labelledby="photos-heading">
-      <div class="photos-header"><p class="section-label">Production Photography</p><div><h2 id="photos-heading">Photos</h2><p>Selected photographic archives from Mina Lakani’s work across film, television, and theatre. Each production opens into its own collection.</p></div></div>
-      <aside class="archive-context" aria-labelledby="archive-context-heading"><h3 id="archive-context-heading">Archival Context <span aria-hidden="true">|</span> <span lang="fa" dir="rtl">توضیح دربارهٔ تصاویر آرشیوی</span></h3><p>Archival production photographs document the characters, costumes, and compulsory dress requirements of their original time and place. They should not be understood as representations of Mina Lakani’s present-day identity or personal beliefs.</p><p class="context-fa" lang="fa" dir="rtl">تصاویر آرشیوی تولیدات، بازتاب‌دهندهٔ شخصیت‌ها، لباس‌ها و الزامات پوششی تحمیل‌شده در زمان و فضای همان آثار هستند و نباید به‌عنوان بیانگر هویت امروزی یا باورهای شخصی مینا لاکانی تلقی شوند.</p></aside>
-      <a class="production-card" href="day-of-the-angel.html" aria-label="Open the Day of the Angel gallery with 13 photographs">
-        <div class="production-cover"><img src="assets/day-of-the-angel/day-of-the-angel-01.svg" alt="Mina Lakani as Fereshteh in Day of the Angel" width="1800" height="1200" loading="lazy" decoding="async"></div>
-        <div class="production-summary"><span class="production-number">01 · Film Gallery</span><h3>Day of the Angel <span class="production-persian" lang="fa" dir="rtl">روز فرشته</span></h3><span class="production-meta">1994 · 13 Production Photographs</span><p class="production-description">A photographic archive preserving moments from Mina Lakani’s performance as Fereshteh.</p><span class="production-open">Open 13-photo gallery →</span></div>
-      </a>
-    </section>
+    <section class="hero" id="home" aria-labelledby="page-title"><div class="hero-copy"><p class="eyebrow">Iranian Actress</p><h1 id="page-title">Mina Lakani</h1><p class="hero-official">Official Actress Website</p><p class="identity-tagline">An Artistic Journey Through Stage and Screen</p><p class="disciplines-line">Theatre · Film · Television</p><p class="hero-tagline">A cinematic record of a professional acting career shaped by theatre, film, television, and artistic perseverance.</p><div class="hero-actions"><a class="explore" href="#journey">Discover her journey</a><a class="explore secondary" href="#credits">View credits</a></div></div><div class="portrait-wrap"><img src="mina-lakani.png" alt="Portrait of actress Mina Lakani" width="1023" height="1537" decoding="async" fetchpriority="high"></div></section>
+    <section class="journey reveal" id="journey" aria-labelledby="journey-heading"><p class="section-label">The Journey</p><div><h2 id="journey-heading">Acting found her through a moment of destiny.</h2><p>Mina Lakani entered the world of theatre on her eighteenth birthday, at the beginning of her nineteenth year, when an unexpected invitation led her to rehearsals for Shakespeare’s <em>Hamlet</em>. That first encounter began a professional career spanning stage, cinema, and television.</p></div></section>
+    <section class="disciplines reveal-stagger" id="work" aria-label="Career disciplines"><article class="discipline"><a href="#theatre-credits"><span aria-hidden="true">01</span><h3>Theatre</h3></a></article><article class="discipline"><a href="#film-credits"><span aria-hidden="true">02</span><h3>Film</h3></a></article><article class="discipline"><a href="#television-credits"><span aria-hidden="true">03</span><h3>Television</h3></a></article></section>
+    <section class="credits reveal" id="credits" aria-labelledby="credits-heading"><div class="credits-header"><p class="section-label">Credits</p><h2 id="credits-heading">Acting work across theatre, film, television, and screen projects.</h2><p>A concise record of confirmed stage and screen credits from Mina Lakani's professional career.</p></div><div class="credits-grid reveal-stagger"><article class="credit-group" id="theatre-credits"><h3>Theatre</h3><ul class="credit-list"><li><span class="credit-title">Hamlet</span><span class="credit-meta">1991</span><span class="credit-note">Professional Stage Debut · Directed by Ghotbeddin Sadeghi</span></li><li><span class="credit-title">The Seagull</span><span class="credit-meta">1996</span><span class="credit-note">Stage Production</span></li><li><span class="credit-title">Striptease</span><span class="credit-meta">2013 · California &amp; Canada</span><span class="credit-note">Comedy Stage Production · Directed by Farzan Deljou · California performances included Wilshire Ebell Theatre, Los Angeles, and Foothill College, Los Altos</span></li></ul></article><article class="credit-group" id="film-credits"><h3>Film</h3><ul class="credit-list"><li><span class="credit-title">Remember the Flight</span><span class="credit-meta">1993</span><span class="credit-note">Feature Film · Directed by Hamid Rakhshani</span></li><li><a href="day-of-the-angel.html" class="credit-title">Day of the Angel</a><span class="credit-meta">Rooz-e Fereshteh · 1994</span><span class="credit-note">Fereshteh / Angel · Feature Film · Directed by Behrouz Afkhami</span></li><li><span class="credit-title">The Visit</span><span class="credit-meta">Didar · 1995</span><span class="credit-note">Janet · Lead Role · Feature Film · Directed by Mohammad Reza Honarmand</span></li><li><span class="credit-title">The Eastern Woman</span><span class="credit-meta">1997</span><span class="credit-note">Feature Film · Directed by Rambod Lotfi</span></li><li><span class="credit-title">Die Hard</span><span class="credit-meta">Jan-Sakht · 1999</span><span class="credit-note">Feature Film · Directed by Ali Akbar Saghafi</span></li></ul></article><article class="credit-group" id="television-credits"><h3>Television</h3><ul class="credit-list"><li><span class="credit-title">Mr. Fabrizi's Business</span><span class="credit-meta">Kasb-o-Kar-e Aghaye Fabrizi · 1996</span><span class="credit-note">Televised Theatre · Directed by Mohammad Reza Khaki and Masoud Foroutan</span></li><li><span class="credit-title">Under the Bazaar</span><span class="credit-meta">1999</span><span class="credit-note">Television Miniseries · Directed by Reza Zhian</span></li><li><span class="credit-title">In the Lion's Skin</span><span class="credit-meta">2000</span><span class="credit-note">Televised Theatre · Directed by Shohreh Lorestani</span></li><li><span class="credit-title">Parimah</span><span class="credit-meta">2001</span><span class="credit-note">Television Film · Directed by Masoud Abparvar</span></li><li><span class="credit-title">Land of Dreams</span><span class="credit-meta">2002–2003</span><span class="credit-note">Television Series · Directed by Masoud Rashidi and Hamid Ghadakchian</span></li><li><span class="credit-title">Fellow Travelers</span><span class="credit-meta">2004–2005</span><span class="credit-note">Television Series · Directed by Ali Zhekan and Mohsen Mohseni-Nasab</span></li><li><span class="credit-title">Days of Protest</span><span class="credit-meta">2005</span><span class="credit-note">Television Series · Directed by Hossein Soheili-Zadeh</span></li><li><span class="credit-title">The Last Sin</span><span class="credit-meta">2006</span><span class="credit-note">Roya Akrami · Television Series · Directed by Hossein Soheili-Zadeh</span></li><li><span class="credit-title">Hasti</span><span class="credit-meta">2008</span><span class="credit-note">Lead Role · Television Film · Directed by Mahmoud Moazami · Produced by Mohsen Badrlou</span></li><li><span class="credit-title">Tell Me This Is Not a Dream</span><span class="credit-meta">2008</span><span class="credit-note">Television Film · Directed by Mehdi Golestaneh</span></li><li><span class="credit-title">Motherhood Song</span><span class="credit-meta">2008</span><span class="credit-note">Samira · Television Series · Directed by Hossein Soheili-Zadeh</span></li><li><span class="credit-title">Tavan</span><span class="credit-meta">2010</span><span class="credit-note">Marjan Amini · Television Series · Directed by Shahram Shah-Hosseini</span></li></ul></article></div><div class="credits-grid reveal-stagger" style="margin-top:clamp(2.5rem,5vw,4.5rem);"><article class="credit-group"><h3>Screen &amp; Video</h3><ul class="credit-list"><li><span class="credit-title">Jonoon</span><span class="credit-meta">جنون</span><span class="credit-note">Anti-drug addiction music video and screen project · Directed by Masoud Abparvar · Screened in cinemas before feature films</span></li></ul></article></div><p class="credits-note">This credits record is based on confirmed acting work and can be expanded as additional documentation is reviewed.</p></section>
+    <section class="photos-archive reveal" id="photos" aria-labelledby="photos-heading"><div class="photos-header"><p class="section-label">Selected Works &amp; Archives</p><div><h2 id="photos-heading">The Visual Archive</h2><p>Selected photographic archives from Mina Lakani’s work across film, television, and theatre. Each production opens into its own collection.</p></div></div><aside class="archive-context" aria-labelledby="archive-context-heading"><h3 id="archive-context-heading">Archival Context <span aria-hidden="true">|</span> <span lang="fa" dir="rtl">توضیح دربارهٔ تصاویر آرشیوی</span></h3><p>Archival production photographs document the characters, costumes, and compulsory dress requirements of their original time and place. They should not be understood as representations of Mina Lakani’s present-day identity or personal beliefs.</p><p class="context-fa" lang="fa" dir="rtl">تصاویر آرشیوی تولیدات، بازتاب‌دهندهٔ شخصیت‌ها، لباس‌ها و الزامات پوششی تحمیل‌شده در زمان و فضای همان آثار هستند و نباید به‌عنوان بیانگر هویت امروزی یا باورهای شخصی مینا لاکانی تلقی شوند.</p></aside><a class="production-card" href="day-of-the-angel.html" aria-label="Open the Day of the Angel gallery with 13 photographs"><div class="production-cover"><img src="assets/day-of-the-angel/day-of-the-angel-01.svg" alt="Mina Lakani as Fereshteh in Day of the Angel" width="1800" height="1200" loading="lazy" decoding="async"></div><div class="production-summary"><span class="production-number">01 · Film Gallery</span><h3>Day of the Angel <span class="production-persian" lang="fa" dir="rtl">روز فرشته</span></h3><span class="production-meta">1994 · 13 Production Photographs</span><p class="production-description">A photographic archive preserving moments from Mina Lakani’s performance as Fereshteh.</p><span class="production-open">Open 13-photo gallery →</span></div></a></section>
   </main>
-
   <footer><span>Official website of Mina Lakani</span><span>© 2026 Mina Lakani. All rights reserved.</span></footer>
-
-  <script>
-    const portraitWrap = document.querySelector('.portrait-wrap');
-    const portraitImage = portraitWrap?.querySelector('img');
-    const revealPortrait = () => requestAnimationFrame(() => portraitWrap?.classList.add('is-loaded'));
-    if (portraitImage) {
-      if (portraitImage.complete) revealPortrait();
-      else portraitImage.addEventListener('load', revealPortrait, { once:true });
-    }
-
-    const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
-        });
-      }, { threshold:0.08, rootMargin:'0px 0px -5% 0px' });
-      revealTargets.forEach((target) => revealObserver.observe(target));
-    } else { revealTargets.forEach((target) => target.classList.add('is-visible')); }
-  </script>
+  <script>const portraitWrap=document.querySelector('.portrait-wrap');const portraitImage=portraitWrap?.querySelector('img');const revealPortrait=()=>requestAnimationFrame(()=>portraitWrap?.classList.add('is-loaded'));if(portraitImage){if(portraitImage.complete)revealPortrait();else portraitImage.addEventListener('load',revealPortrait,{once:true});}const revealTargets=document.querySelectorAll('.reveal, .reveal-stagger');if('IntersectionObserver' in window){const revealObserver=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}});},{threshold:0.08,rootMargin:'0px 0px -5% 0px'});revealTargets.forEach((target)=>revealObserver.observe(target));}else{revealTargets.forEach((target)=>target.classList.add('is-visible'));}</script>
 </body>
 </html>
